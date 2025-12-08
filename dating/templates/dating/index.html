@@ -1,1 +1,58 @@
 {% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<main class="container py-5">
+        
+    <section class="hero-section row align-items-center mb-5">
+        <div class="col-lg-6">
+            <h1 class="display-1 hero-headline">Meet. Match. Move.</h1>
+            <p class="lead mb-4">A fun, effortless way to meet real people nearby.</p>
+            <div class="hero-ctas">
+                <button class="btn btn-lg primary cta ">Get Started</button>
+                <button class="btn btn-lg secondary cta">Browse Profiles</button>
+            </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="hero-visual-heart">
+                <div class="abstract-shape shape-1"></div>
+                <div class="abstract-shape shape-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="soft-divider">
+
+    <section class="features-section py-5">
+        <h2 class="text-center mb-5 feature-title">Why Match Up?</h2>
+        <div class="row g-4">
+            
+            <div class="col-md-4">
+                <div class="feature-card coral-gradient">
+                    <div class="feature-icon"><i class="fa-notdog fa-solid fa-heart"></i></div>
+                    <h3></i>Swipe & Match</h3>
+                    <p>Quick, fun, carefree connections. No pressure, just good times.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="feature-card peach-gradient">
+                    <div class="feature-icon"><i class="fa-duotone fa-solid fa-circle-user feature-icon"></i></div>
+                    <h3>Vibes First™</h3>
+                    <p>Mini quizzes show you who's on your wavelength. Compatibility matters.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card pink-gradient">
+                    <div class="feature-icon"><i class="fa-notdog fa-solid fa-camera"></i></div>
+                    <h3>Real People</h3>
+                    <p>Verified profiles with fun personality prompts. Say goodbye to bots.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="soft-divider">
+
+{% endblock content %}
