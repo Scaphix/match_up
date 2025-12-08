@@ -10,8 +10,9 @@
 
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -28,14 +29,15 @@
 <body class="d-flex flex-column h-100 main-bg">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg d-none d-lg-flex container py-4">
         <div class="container-fluid ">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="logo">Match Up</span></a>
+            <!-- Logo -->     
+            <a class="navbar-brand matchup-logo" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Match Up">Match Up</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
+            <div class="collapse navbar-collapse ms-auto" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
@@ -70,13 +72,13 @@
                     {% endif %}
                 </ul>
                 <span class="navbar-text text-muted">
-                    adventures of a software developer
+                    Your space to connect
                 </span>
             </div>
         </div>
     </nav>
 
-    <main class="flex-shrink-0 main-bg">
+    <main class="container py-5">
 
         {% block content %}
         <!-- Content Goes here -->
@@ -85,10 +87,11 @@
     </main>
 
     <!-- Footer -->
+  
     <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-white">&copy; {{ 2025 }} Match Up — All rights reserved.</p>
-        <p class="m-0 text-center text-white"><a href="#">About</a> • <a href="#">Contact</a></p>
-        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
+        <p class="m-0 text-center text-black">&copy; {{ 2025 }} Match Up — All rights reserved.</p>
+        <p class="m-0 text-center text-black"><a href="#">About</a> • <a href="#">Contact</a></p>
+        <p class="m-0 text-center text-black">Follow us: <i class="fab fa-facebook-square ms-3"></i>
             <i class="fab fa-twitter-square ms-3"></i>
             <i class="fab fa-instagram-square ms-3"></i>
             <i class="fab fa-youtube-square ms-3"></i>

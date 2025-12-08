@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+:root {
+   /* Typography */
+   --font-heading: 'Poppins', sans-serif; /* ExtraBold */
+   --font-body: 'Inter', sans-serif;
+   --font-accent: 'Montserrat', sans-serif; /* SemiBold */
+    
+   
+    /* Colors */
+    --coral: #FF5A7A;
+    --pink: #FF2F9B;
+    --peach: #FFB39B;
+    --lavender: #C7A7FF;
+    --mint: #87F4D0;
+    --black: #1A1A1F;
+    --white: #FFF9F8;
+
+/* Brand Signature Gradient */
+--brand-gradient: linear-gradient(135deg, var(--vibrant-pink) 0%, var(--passion-coral) 50%, var(--sunrise-peach) 100%);    
+}
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -5,11 +31,52 @@
 }
 
 body {
-    font-family: sans-serif;
-    line-height: 1.5;
-    background: #f9f9f9;
-    color: #333;
+    color: var(--text-color);
+    background-color: var(--white);
+    color: var(--black);
+    font-family: var(--font-body);
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 800; /* Poppins ExtraBold */
+}
+
+/* LOGO & NAVBAR */
+
+.matchup-logo {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--black);
+    text-decoration: none;
+}
+.matchup-logo:hover {
+    color: var(--coral);
+}
+
+
+nav img {
+    width: 50px;
+    height: 50px;
+}
+
+
+.navbar-nav .nav-link {
+    font-family: var(--font-accent);
+    font-weight: 600;
+    color: var(--black);
+    opacity: 0.8;
+    transition: color 0.3s, opacity 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--coral);
+    opacity: 1;
+}
+
 
 .container {
     width: 90%;
@@ -18,22 +85,12 @@ body {
 }
 
 
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
 .dark-bg {
-    background-color: #445261;
+    background-color: var(--white);
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: var(--white);
 }
 
 
@@ -41,5 +98,5 @@ nav a:hover {
     text-decoration: none;
     font-size: 1rem;
     font-weight: bold;
-    color: #fff;
+    color: var(--black);
 }
