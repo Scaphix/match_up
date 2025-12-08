@@ -60,36 +60,44 @@ h1, h2, h3, h4, h5, h6 {
 .matchup-logo {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
     font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 800;
+    font-size: 2rem;
     color: var(--black);
     text-decoration: none;
 }
 .matchup-logo:hover {
-    color: var(--coral);
+    color: var(--black);
+    text-decoration: none;
 }
 
+.matchup-logo img {
+    height: 55px;
+    padding: 10px;
 
-nav img {
-    width: 50px;
-    height: 50px;
 }
-
 
 .navbar-nav .nav-link {
     font-family: var(--font-accent);
     font-weight: 600;
-    color: var(--black);
     opacity: 0.8;
     transition: color 0.3s, opacity 0.3s;
+    background: var(--black);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .navbar-nav .nav-link:hover {
-    color: var(--coral);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 90, 122, 0.3);
     opacity: 1;
 }
-
 
 /* HERO SECTION */
 
