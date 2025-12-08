@@ -270,3 +270,61 @@ nav img {
     font-weight: bold;
     color: var(--black);
 }
+
+/* AUTH FORMS */
+.auth-card {
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    border: 2px solid rgba(26, 26, 31, 0.1);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--coral);
+    box-shadow: 0 0 0 0.2rem rgba(255, 90, 122, 0.25);
+    outline: none;
+}
+
+.form-label {
+    font-family: var(--font-accent);
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.form-check-input:checked {
+    background-color: var(--coral);
+    border-color: var(--coral);
+}
+
+.form-text {
+    font-size: 0.875rem;
+    color: rgba(26, 26, 31, 0.6);
+    font-family: var(--font-body);
+}
+
+.alert {
+    border-radius: 10px;
+    font-family: var(--font-body);
+}
+
+.alert-danger {
+    background-color: rgba(255, 90, 122, 0.1);
+    border-color: var(--coral);
+    color: var(--black);
+}
+
+
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 2rem !important;
+    }
+}
+

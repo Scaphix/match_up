@@ -21,5 +21,6 @@ from dating import views
 
 urlpatterns = [
     path('', include('dating.urls'), name="dating-urls"),
+    path("account/", include("allauth.urls"), name="account-urls"),
     path('admin/', admin.site.urls),
 ]
