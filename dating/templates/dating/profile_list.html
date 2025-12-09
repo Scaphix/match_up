@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+
 <main class="container py-3">
     <section class="row">
         <div class="col-12">
             <h1>Profiles</h1>
             {% for profile in object_list %}
-            <h2>{{profile.title}}</h2>
-            <p>{{post.excerpt}}</p>
-            <p>Author: {{post.author}}</p>
+            <h2>{{profile.user.username}}</h2>
+            <p>{{profile.bio}}</p>
+            <p>Location: {{profile.location}}</p>
+            <p>Interests: {{profile.interests}}</p>
+            <p>Photo: {{profile.photo}}</p>
             {% endfor %}
         </div>
     </section>

@@ -21,6 +21,7 @@ from dating import views
 
 urlpatterns = [
     path('', include('dating.urls'), name="dating-urls"),
+    path('summernote/', include('django_summernote.urls')),
     path("account/", include("allauth.urls"), name="account-urls"),
     path('admin/', admin.site.urls),
 ]
