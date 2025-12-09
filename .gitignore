@@ -7,3 +7,6 @@ __pycache__/
 *.so
 .Python
 db.sqlite3
+profile_pictures/
+media/
+staticfiles/
