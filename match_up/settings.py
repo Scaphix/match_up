@@ -133,10 +133,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Account setup
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = True
+
+# Account setup (updated to new allauth settings)
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+# Fields with a trailing * are required per allauth 64+ deprecations
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/account/login/'
