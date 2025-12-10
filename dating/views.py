@@ -20,7 +20,7 @@ class ProfileCreate(LoginRequiredMixin, generic.CreateView):
     model = Profile
     fields = ['age', 'gender', 'location', 'bio', 'interests', 'photo']
     template_name = 'dating/profile_form.html'
-    success_url = reverse_lazy('profile_list')
+    success_url = reverse_lazy('profile_detail')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -43,7 +43,16 @@ class ProfileCreate(LoginRequiredMixin, generic.CreateView):
         return reverse_lazy('profile_detail', args=[self.object.pk])
 
 
-class ProfileDetail(generic.DetailView):
+class ProfileDetail(LoginRequiredMixin, generic.DetailView):
     model = Profile
     template_name = 'dating/profile_detail.html'
     context_object_name = 'profile'
+
+
+class ProfileAbout(LoginRequiredMixin, generic.DetailView):
+    model = Profile
+    template_name = 'dating/profile_detail.html'
+    context_object_name = 'profile'
+
+    def get_object(self):
+        return self.request.user.profile

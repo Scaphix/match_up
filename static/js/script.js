@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     //  HOME PAGE BUTTONS 
-    console.log('DOMContentLoaded');
     // Get Started Button - redirects to signup or profile creation
     const getStartedBtn = document.getElementById('cta');
     if (getStartedBtn) {
@@ -13,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                    document.body.classList.contains('user-authenticated');
             if (isAuthenticated) {
                 // Redirect to profile creation if logged in
-                window.location.href = '/profile/create/';
+                window.location.href = 'profile/about/';
             } else {
                 // Redirect to signup if not logged in
                 window.location.href = '/account/signup/';
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Browse Profiles Button - redirects to profile list
-    const browseProfilesBtn = document.querySelector('.secondary');
+    const browseProfilesBtn = document.querySelector('secondary');
     if (browseProfilesBtn) {
         browseProfilesBtn.addEventListener('click', function(e){
             e.preventDefault();
@@ -30,32 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
                                     document.body.classList.contains('user-authenticated');
             if (isAuthenticated) {
                   // Redirect to profile list if logged in
-            window.location.href = '/profiles/';
+                  window.location.href = '/profiles/';
             } else {
                 // Redirect to login if not logged in
-            window.location.href = '/account/login/';
+                alert('Please login to browse profiles');
+                window.location.href = '/account/login/';
             }
         });
     }
-
-    
-
-     // PROFILE FORM - SAVE BUTTON 
-    
-     const profileForm = document.querySelector('form[enctype="multipart/form-data"]');
-     const saveProfileBtn = profileForm ? profileForm.querySelector('button[type="submit"]') : null;
-     
-     if (profileForm && saveProfileBtn) {
-         // Add form validation before submission
-         profileForm.addEventListener('submit', function(e) {
-           
-             // Show loading state
-             saveProfileBtn.disabled = true;
-             saveProfileBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Saving...';
-             
-             // Form will submit normally if validation passes
-         });
-         
-       
-     }
  });
+
+ 

@@ -122,26 +122,28 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
     color: var(--white);
     box-shadow: 0 8px 15px rgba(255, 90, 122, 0.3);
+   
 }
 
 .primary:hover {
-    background-position: right center; /* Shift the gradient */
+   
     transform: translateY(-2px); /* Soft lift */
     box-shadow: 0 12px 20px rgba(255, 90, 122, 0.4);
 }
 
 /* Secondary CTA Button (Outline Lavender) */
 .secondary {
-    background: transparent;
+    background: var(--white);
     color: var(--black);
     border: 2px solid var(--lavender);
 }
 
 .secondary:hover {
-    background-position: var(--lavender);
+    background: var(--lavender-gradient);
+    background-position:right center;
     transform: translateY(-2px); /* Soft lift */
     color: var(--white);
-    box-shadow: 0 4px 10px rgba(199, 167, 255, 0.5);
+    box-shadow: 0 12px 20px rgba(199, 167, 255, 0.5);
 }
 
 /* Hero Visual (Abstract Shapes) */
