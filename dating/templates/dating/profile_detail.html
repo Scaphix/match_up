@@ -7,14 +7,19 @@
       <div class="card shadow-sm border-0 col-lg-6 col-md-8">
         <div class="card-body p-4">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h1 class="h4 mb-0 text-center flex-grow-1">
+            <h1 class="h4 mb-0 flex-grow-1">
               {% if profile.user == user %}
                 About me
-                <a href="{% url 'profile_update' %}" class="btn btn-outline-primary btn-sm">Edit Profile</a>
               {% else %}
                 About {{ profile.user.username }}
               {% endif %}
             </h1>
+            {% if profile.user == user %}
+              <div class="d-flex">
+                <a href="{% url 'profile_update' %}" class="btn btn-outline-primary btn-sm me-2">Edit Profile</a>
+                <a href="{% url 'profile_delete' %}" class="btn btn-outline-danger btn-sm">Delete Profile</a>
+              </div>
+            {% endif %}
           </div>
           {% if profile.photo %}
             <img src="{{ profile.photo.url }}" class="img-fluid mb-3 d-block mx-auto" alt="Profile photo">

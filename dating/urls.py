@@ -15,6 +15,11 @@ urlpatterns = [
         name='profile_update',
     ),
     path(
+        'profile/delete/',
+        views.ProfileDelete.as_view(),
+        name='profile_delete',
+    ),
+    path(
         'profile/about/',
         views.ProfileAbout.as_view(),
         name='profile_about',

@@ -4,6 +4,7 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from django.contrib import messages
 from .models import Profile
 
 
@@ -15,6 +16,15 @@ class ProfileList(LoginRequiredMixin, generic.ListView):
     model = Profile
     template_name = 'dating/profile_list.html'
     context_object_name = 'profiles'
+
+    def get(self, request, *args, **kwargs):
+        if not hasattr(request.user, 'profile'):
+            messages.info(
+                request,
+                'You must create a profile to browse other profiles.'
+            )
+            return redirect('profile_create')
+        return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
         queryset = Profile.objects.all().order_by("-createdAt")
@@ -68,6 +78,22 @@ class ProfileUpdate(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('profile_about')
+
+
+class ProfileDelete(LoginRequiredMixin, generic.DeleteView):
+    model = Profile
+    template_name = 'dating/profile_delete.html'
+
+    def get(self, request, *args, **kwargs):
+        if not hasattr(request.user, 'profile'):
+            return redirect('profile_create')
+        return super().get(request, *args, **kwargs)
+
+    def get_object(self):
+        return self.request.user.profile
+
+    def get_success_url(self):
+        return reverse_lazy('home')
 
 
 class ProfileDetail(LoginRequiredMixin, generic.DetailView):
