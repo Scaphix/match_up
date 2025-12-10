@@ -11,10 +11,17 @@ class Home(generic.TemplateView):
     template_name = 'dating/index.html'
 
 
-class ProfileList(generic.ListView):
-    queryset = Profile.objects.all().order_by("-createdAt")
+class ProfileList(LoginRequiredMixin, generic.ListView):
+    model = Profile
     template_name = 'dating/profile_list.html'
     context_object_name = 'profiles'
+
+    def get_queryset(self):
+        queryset = Profile.objects.all().order_by("-createdAt")
+        # Exclude current user's profile if they have one
+        if hasattr(self.request.user, 'profile'):
+            queryset = queryset.exclude(user=self.request.user)
+        return queryset
 
 
 class ProfileCreate(LoginRequiredMixin, generic.CreateView):
@@ -33,10 +40,17 @@ class ProfileCreate(LoginRequiredMixin, generic.CreateView):
             return self.form_invalid(form)
         except ValidationError as e:
             # Attach validation errors to the form and re-render
-            form.add_error(None, e.message if hasattr(e, "message") else str(e))
+            error_msg = (
+                e.message if hasattr(e, "message") else str(e)
+            )
+            form.add_error(None, error_msg)
             return self.form_invalid(form)
         except Exception:
-            form.add_error(None, "Something went wrong while saving your profile. Please try again.")
+            form.add_error(
+                None,
+                "Something went wrong while saving your profile. "
+                "Please try again."
+            )
             return self.form_invalid(form)
     # Redirect to profile detail page after successful profile creation
 
