@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from cloudinary.models import CloudinaryField
 
 
@@ -16,7 +16,7 @@ class Profile(models.Model):
         validators=[MinValueValidator(18), MaxValueValidator(99)])
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     location = models.CharField(max_length=100, blank=True)
-    bio = models.TextField(max_length=500, blank=True)
+    bio = models.TextField(max_length=500, validators=[MinLengthValidator(10)])
     interests = models.CharField(max_length=250, blank=True)
     photo = CloudinaryField(
         'image', folder='profile_pictures/', blank=True, null=True)
