@@ -2,18 +2,52 @@
 {% block content %}
 {% load static %}
 
-<main class="container py-3">
-    <section class="row">
-        <div class="col-12">
-            <h1>Profiles</h1>
-            {% for profile in object_list %}
-            <h2>{{profile.user.username}}</h2>
-            <p>{{profile.bio}}</p>
-            <p>Location: {{profile.location}}</p>
-            <p>Interests: {{profile.interests}}</p>
-            <p>Photo: {{profile.photo}}</p>
-            {% endfor %}
+<main class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <p class="text-muted mb-1">Discover matches</p>
+      <h1 class="h3 mb-0">Profiles</h1>
+    </div>
+    <a class="btn btn-outline-primary" href="{% url 'profile_create' %}">Create / Edit Profile</a>
+  </div>
+
+  {% if object_list %}
+    <div class="row g-4">
+      {% for profile in object_list %}
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm border-0">
+            {% if profile.photo %}
+              <img src="{{ profile.photo.url }}" class="card-img-top" alt="{{ profile.user.username }}'s photo">
+            {% endif %}
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-2">
+                <div class="fw-bold me-2">{{ profile.user.username }}</div>
+                {% if profile.location %}
+                  <span class="badge bg-light text-dark">{{ profile.location }}</span>
+                {% endif %}
+              </div>
+              {% if profile.bio %}
+                <p class="text-muted small mb-2">{{ profile.bio }}</p>
+              {% endif %}
+              {% if profile.interests %}
+                <div class="small">
+                  <span class="text-muted">Interests:</span>
+                  <span class="fw-semibold">{{ profile.interests }}</span>
+                </div>
+              {% endif %}
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+              <a href="{% url 'profile_detail' profile.pk %}" class="btn btn-primary w-100">View Profile</a>
+            </div>
+          </div>
         </div>
-    </section>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-5">
+      <p class="text-muted mb-3">No profiles yet. Be the first to share yours!</p>
+      <a class="btn btn-primary" href="{% url 'profile_create' %}">Create your profile</a>
+    </div>
+  {% endif %}
 </main>
 {% endblock content %}
