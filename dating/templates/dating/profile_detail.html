@@ -17,9 +17,7 @@
               {% endif %}
             </h1>
           </div>
-          {% if profile.photo %}
-            <img src="{{ profile.photo.url }}" class="img-fluid mb-3 d-block mx-auto" alt="Profile photo">
-          {% endif %}
+          <img src="{% if profile.photo %}{{ profile.photo.url }}{% else %}{% static 'images/nobody.jpg' %}{% endif %}" class="img-fluid mb-3 d-block mx-auto" alt="Profile photo">
           {% if profile.bio %}
             <p class="text-muted mb-3 text-center">{{ profile.bio }}</p>
           {% endif %}

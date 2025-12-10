@@ -40,18 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'django_summernote',
-
-    # Apps
-    'dating',
-    # Others
     'cloudinary',
-    'cloudinary_storage',
-
+    'dating',
 ]
 
 SITE_ID = 1
