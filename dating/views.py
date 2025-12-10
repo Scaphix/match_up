@@ -37,4 +37,13 @@ class ProfileCreate(LoginRequiredMixin, generic.CreateView):
         except Exception:
             form.add_error(None, "Something went wrong while saving your profile. Please try again.")
             return self.form_invalid(form)
+    # Redirect to profile detail page after successful profile creation
 
+    def get_success_url(self):
+        return reverse_lazy('profile_detail', args=[self.object.pk])
+
+
+class ProfileDetail(generic.DetailView):
+    model = Profile
+    template_name = 'dating/profile_detail.html'
+    context_object_name = 'profile'
