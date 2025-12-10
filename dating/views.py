@@ -58,6 +58,18 @@ class ProfileCreate(LoginRequiredMixin, generic.CreateView):
         return reverse_lazy('profile_detail', args=[self.object.pk])
 
 
+class ProfileUpdate(LoginRequiredMixin, generic.UpdateView):
+    model = Profile
+    fields = ['age', 'gender', 'location', 'bio', 'interests', 'photo']
+    template_name = 'dating/profile_form.html'
+
+    def get_object(self):
+        return self.request.user.profile
+
+    def get_success_url(self):
+        return reverse_lazy('profile_about')
+
+
 class ProfileDetail(LoginRequiredMixin, generic.DetailView):
     model = Profile
     template_name = 'dating/profile_detail.html'
