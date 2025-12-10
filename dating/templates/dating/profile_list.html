@@ -15,9 +15,7 @@
       {% for profile in object_list %}
         <div class="col-md-6 col-lg-4">
           <div class="card h-100 shadow-sm border-0">
-            {% if profile.photo %}
-              <img src="{{ profile.photo.url }}" class="card-img-top" alt="{{ profile.user.username }}'s photo">
-            {% endif %}
+            <img src="{% if profile.photo %}{{ profile.photo.url }}{% else %}{% static 'images/nobody.jpg' %}{% endif %}" class="card-img-top" alt="{{ profile.user.username }}'s photo">
             <div class="card-body">
               <div class="d-flex align-items-center mb-2">
                 <div class="fw-bold me-2">{{ profile.user.username }}</div>

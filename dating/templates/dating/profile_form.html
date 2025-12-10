@@ -6,13 +6,7 @@
   <div class="row justify-content-center">
       <div class="card shadow-sm border-0 col-lg-6 col-md-8">
         <div class="card-body p-4">
-          <h1 class="h4 mb-3 text-center">
-            {% if object %}
-              Edit Profile
-            {% else %}
-              Create Profile
-            {% endif %}
-          </h1>
+          <h1 class="h4 mb-3 text-center">Edit Profile</h1>
           <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
             {% csrf_token %}
             {{ form.as_p }}
@@ -24,6 +18,7 @@
           </form>
         </div>
       </div>
+
   </div>
 </main>
 {% endblock content %}
