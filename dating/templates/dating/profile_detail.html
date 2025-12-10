@@ -13,19 +13,24 @@
               About {{ profile.user.username }}
             {% endif %}
           </h1>
-          {% if profile.bio %}
-          <p class="text-muted mb-3 text-center">{{ profile.bio }}</p>
-        {% endif %}
-        {% if profile.location %}
-          <p class="text-muted mb-3 text-center">{{ profile.location }}</p>
-        {% endif %}
-        {% if profile.interests %}
-          <p class="text-muted mb-3 text-center">{{ profile.interests }}</p>
-          <p class="text-muted mb-3 text-center">{{ profile.age }}</p>
-          <p class="text-muted mb-3 text-center">{{ profile.gender }}</p>
           {% if profile.photo %}
-          <img src="{{ profile.photo.url }}" class="img-fluid mb-3" alt="Profile photo">
-        {% endif %}
+            <img src="{{ profile.photo.url }}" class="img-fluid mb-3 d-block mx-auto" alt="Profile photo">
+          {% endif %}
+          {% if profile.bio %}
+            <p class="text-muted mb-3 text-center">{{ profile.bio }}</p>
+          {% endif %}
+          {% if profile.age %}
+            <p class="text-muted mb-3 text-center"><strong>Age:</strong> {{ profile.age }}</p>
+          {% endif %}
+          {% if profile.gender %}
+            <p class="text-muted mb-3 text-center"><strong>Gender:</strong> {{ profile.get_gender_display }}</p>
+          {% endif %}
+          {% if profile.location %}
+            <p class="text-muted mb-3 text-center"><strong>Location:</strong> {{ profile.location }}</p>
+          {% endif %}
+          {% if profile.interests %}
+            <p class="text-muted mb-3 text-center"><strong>Interests:</strong> {{ profile.interests }}</p>
+          {% endif %}
         </div>
       </div>
   </div>

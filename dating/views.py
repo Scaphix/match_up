@@ -3,6 +3,7 @@ from django.forms import ValidationError
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
 from .models import Profile
 
 
@@ -53,6 +54,11 @@ class ProfileAbout(LoginRequiredMixin, generic.DetailView):
     model = Profile
     template_name = 'dating/profile_detail.html'
     context_object_name = 'profile'
+
+    def get(self, request, *args, **kwargs):
+        if not hasattr(request.user, 'profile'):
+            return redirect('profile_create')
+        return super().get(request, *args, **kwargs)
 
     def get_object(self):
         return self.request.user.profile
