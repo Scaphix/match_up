@@ -8,7 +8,10 @@
             <h1 class="display-1 hero-headline">Meet. Match. Move.</h1>
             <p class="lead mb-4">A fun, effortless way to meet real people nearby.</p>
             <div class="hero-ctas">
-                <button class="btn btn-lg primary cta ">Get Started</button>
+                <button id ='cta' class="btn btn-lg primary cta" 
+                data-authenticated="{% if user.is_authenticated %}true{% else %}false{% endif %}">
+                 Get Started
+                </button>
                 <button class="btn btn-lg secondary cta">Browse Profiles</button>
             </div>
         </div>
