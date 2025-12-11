@@ -12,6 +12,13 @@ class Home(generic.TemplateView):
     template_name = 'dating/index.html'
 
 
+class ProfileGetStarted(LoginRequiredMixin, generic.TemplateView):
+    def get(self, request, *args, **kwargs):
+        if not hasattr(request.user, 'profile'):
+            return redirect('profile_create')
+        return redirect('profile_about')
+
+
 class ProfileList(LoginRequiredMixin, generic.ListView):
     model = Profile
     template_name = 'dating/profile_list.html'
