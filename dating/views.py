@@ -12,8 +12,10 @@ class Home(generic.TemplateView):
     template_name = 'dating/index.html'
 
 
-class ProfileGetStarted(LoginRequiredMixin, generic.TemplateView):
+class ProfileGetStarted(generic.TemplateView):
     def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('account_signup')
         if not hasattr(request.user, 'profile'):
             return redirect('profile_create')
         return redirect('profile_about')
