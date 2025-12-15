@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-4">My Matches</h1>
+            
+            {% if match_profiles %}
+                <div class="row g-4">
+                    {% for match_data in match_profiles %}
+                        {% with match=match_data.match profile=match_data.profile %}
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card shadow-sm border-0 h-100 match-card">
+                                <div class="card-body p-4 text-center">
+                                    {% if profile.photo %}
+                                        <img src="{{ profile.photo.url }}" 
+                                             class="img-fluid rounded-circle mb-3 match-photo" 
+                                             alt="{{ profile.user.username }}'s photo"
+                                             style="width: 150px; height: 150px; object-fit: cover;">
+                                    {% else %}
+                                        <img src="{% static 'images/nobody.jpg' %}" 
+                                             class="img-fluid rounded-circle mb-3 match-photo" 
+                                             alt="No photo"
+                                             style="width: 150px; height: 150px; object-fit: cover;">
+                                    {% endif %}
+                                    
+                                    <h3 class="h5 mb-2">{{ profile.user.username }}</h3>
+                                    
+                                    {% if profile.age %}
+                                        <p class="text-muted mb-1"><strong>Age:</strong> {{ profile.age }}</p>
+                                    {% endif %}
+                                    
+                                    {% if profile.location %}
+                                        <p class="text-muted mb-3"><strong>Location:</strong> {{ profile.location }}</p>
+                                    {% endif %}
+                                    
+                                    {% if profile.bio %}
+                                        <p class="mb-3">{{ profile.bio|truncatewords:20 }}</p>
+                                    {% endif %}
+                                    
+                                    <div class="d-flex gap-2 justify-content-center">
+                                        <a href="{% url 'profile_detail' pk=profile.id %}" 
+                                           class="btn btn-primary">
+                                            <i class="fas fa-user me-2"></i>View Profile
+                                        </a>
+                                        <button class="btn btn-outline-primary" disabled>
+                                            <i class="fas fa-comments me-2"></i>Message
+                                            <small class="d-block">Coming Soon</small>
+                                        </button>
+                                    </div>
+                                    
+                                    <p class="text-muted small mt-3 mb-0">
+                                        Matched on {{ match.created_at|date:"M d, Y" }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endwith %}
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                {% if is_paginated %}
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            </li>
+                        {% endif %}
+                        
+                        <li class="page-item active">
+                            <span class="page-link">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                            </span>
+                        </li>
+                        
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            {% else %}
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-5 text-center">
+                        <i class="fas fa-heart fa-3x text-muted mb-3"></i>
+                        <h3 class="mb-3">No matches yet</h3>
+                        <p class="text-muted mb-4">
+                            Start discovering profiles and like the ones you're interested in. 
+                            When they like you back, you'll have a match!
+                        </p>
+                        <a href="{% url 'connections:discover' %}" class="btn btn-primary">
+                            <i class="fas fa-search me-2"></i>Start Discovering
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock content %}
+
