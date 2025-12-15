@@ -13,6 +13,16 @@ class Home(generic.TemplateView):
     template_name = 'dating/index.html'
 
 
+class AboutView(generic.TemplateView):
+    """About page for Match Up"""
+    template_name = 'dating/about.html'
+
+
+class ContactView(generic.TemplateView):
+    """Contact page for Match Up"""
+    template_name = 'dating/contact.html'
+
+
 class ProfileGetStarted(generic.TemplateView):
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:

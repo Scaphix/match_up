@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-5">
+                    <h1 class="display-4 text-center mb-4">About Match Up</h1>
+                    
+                    <div class="text-center mb-5">
+                        <img src="{% static 'images/logo.png' %}" alt="Match Up Logo" class="mb-3" style="max-width: 200px;">
+                        <p class="lead text-muted">Meet. Match. Move.</p>
+                    </div>
+                    
+                    <hr class="my-5">
+                    
+                    <section class="mb-5">
+                        <h2 class="h3 mb-3">Our Mission</h2>
+                        <p class="mb-3">
+                            At Match Up, we believe that meaningful connections should be fun, effortless, and authentic. 
+                            Our platform is designed to help you meet real people nearby who share your interests and values.
+                        </p>
+                        <p>
+                            We're committed to creating a safe, inclusive space where everyone can find their perfect match, 
+                            whether you're looking for friendship, romance, or something in between.
+                        </p>
+                    </section>
+                    
+                    <section class="mb-5">
+                        <h2 class="h3 mb-3">How It Works</h2>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="mb-3">
+                                        <i class="fas fa-user-plus fa-3x text-primary"></i>
+                                    </div>
+                                    <h4 class="h5">1. Create Your Profile</h4>
+                                    <p class="text-muted small">
+                                        Sign up and create a profile that showcases your personality, interests, and what makes you unique.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="mb-3">
+                                        <i class="fas fa-search fa-3x text-primary"></i>
+                                    </div>
+                                    <h4 class="h5">2. Discover Matches</h4>
+                                    <p class="text-muted small">
+                                        Browse through profiles and discover people who match your preferences. 
+                                        Like the ones that catch your interest!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="mb-3">
+                                        <i class="fas fa-heart fa-3x text-primary"></i>
+                                    </div>
+                                    <h4 class="h5">3. Connect & Chat</h4>
+                                    <p class="text-muted small">
+                                        When someone likes you back, it's a match! Start a conversation and see where it leads.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="mb-5">
+                        <h2 class="h3 mb-3">Our Values</h2>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-shield-alt text-primary me-2"></i>
+                                <strong>Safety First:</strong> We prioritize your safety and privacy with robust security measures 
+                                and a zero-tolerance policy for harassment.
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-users text-primary me-2"></i>
+                                <strong>Inclusivity:</strong> Everyone is welcome. We celebrate diversity and create an environment 
+                                where all identities and orientations are respected.
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-heart text-primary me-2"></i>
+                                <strong>Authenticity:</strong> We encourage genuine connections. Be yourself, and find people who 
+                                appreciate you for who you are.
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-smile text-primary me-2"></i>
+                                <strong>Fun & Easy:</strong> Dating should be enjoyable, not stressful. Our simple, intuitive 
+                                interface makes connecting effortless.
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section class="mb-5">
+                        <h2 class="h3 mb-3">Privacy & Safety</h2>
+                        <p class="mb-3">
+                            Your privacy and safety are our top priorities. We use industry-standard encryption to protect your data, 
+                            and we never share your personal information with third parties without your explicit consent.
+                        </p>
+                        <p>
+                            If you encounter any issues or have concerns about safety, please don't hesitate to 
+                            <a href="{% url 'contact' %}">contact us</a>. We're here to help.
+                        </p>
+                    </section>
+                    
+                    <div class="text-center mt-5">
+                        <a href="{% url 'home' %}" class="btn btn-primary btn-lg me-2">
+                            <i class="fas fa-home me-2"></i>Back to Home
+                        </a>
+                        {% if not user.is_authenticated %}
+                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-user-plus me-2"></i>Get Started
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
+

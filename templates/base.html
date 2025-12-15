@@ -103,7 +103,10 @@
   
     <footer class="footer mt-auto py-3 dark-bg">
         <p class="m-0 text-center text-black">&copy; {{ 2025 }} Match Up — All rights reserved.</p>
-        <p class="m-0 text-center text-black"><a href="#">About</a> • <a href="#">Contact</a></p>
+        <p class="m-0 text-center text-black">
+            <a href="{% url 'about' %}" class="text-decoration-none text-black">About</a> • 
+            <a href="{% url 'contact' %}" class="text-decoration-none text-black">Contact</a>
+        </p>
         <p class="m-0 text-center text-black">Follow us: <i class="fab fa-facebook-square ms-3"></i>
             <i class="fab fa-twitter-square ms-3"></i>
             <i class="fab fa-instagram-square ms-3"></i>

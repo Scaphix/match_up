@@ -44,4 +44,6 @@ urlpatterns = [
         views.PreferenceUpdate.as_view(),
         name='preference_update',
     ),
+    path('about/', views.AboutView.as_view(), name='about'),
+    path('contact/', views.ContactView.as_view(), name='contact'),
 ]

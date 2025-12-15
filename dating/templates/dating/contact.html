@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-5">
+                    <h1 class="display-4 text-center mb-4">Contact Us</h1>
+                    <p class="lead text-center text-muted mb-5">
+                        We'd love to hear from you! Get in touch with any questions, feedback, or concerns.
+                    </p>
+                    
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6">
+                            <div class="text-center p-4 border rounded">
+                                <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
+                                <h3 class="h5 mb-2">Email Us</h3>
+                                <p class="text-muted mb-0">
+                                    <a href="mailto:support@matchup.com">support@matchup.com</a>
+                                </p>
+                                <small class="text-muted">We typically respond within 24 hours</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center p-4 border rounded">
+                                <i class="fas fa-headset fa-2x text-primary mb-3"></i>
+                                <h3 class="h5 mb-2">Support Hours</h3>
+                                <p class="text-muted mb-0">Monday - Friday</p>
+                                <p class="text-muted mb-0">9:00 AM - 6:00 PM EST</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-5">
+                    
+                    <section class="mb-5">
+                        <h2 class="h3 mb-4">Frequently Asked Questions</h2>
+                        
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                        How do I report inappropriate behavior?
+                                    </button>
+                                </h2>
+                                <div id="collapse1" class="accordion-collapse collapse show" 
+                                     aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        If you encounter any inappropriate behavior, harassment, or safety concerns, 
+                                        please contact us immediately at <strong>support@matchup.com</strong> with details. 
+                                        We take all reports seriously and will investigate promptly.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                        How do I delete my account?
+                                    </button>
+                                </h2>
+                                <div id="collapse2" class="accordion-collapse collapse" 
+                                     aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        You can delete your account by going to your profile settings. 
+                                        If you need assistance, please contact our support team.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        Can I change my preferences?
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse" 
+                                     aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Yes! You can update your matching preferences at any time by going to 
+                                        your profile settings and selecting "Edit Preferences".
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        How does the matching algorithm work?
+                                    </button>
+                                </h2>
+                                <div id="collapse4" class="accordion-collapse collapse" 
+                                     aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Our matching system shows you profiles based on your preferences (age range, gender, location). 
+                                        When you like someone and they like you back, it's a match! We believe in letting 
+                                        genuine connections happen naturally.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <hr class="my-5">
+                    
+                    <section>
+                        <h2 class="h3 mb-4">Send Us a Message</h2>
+                        <p class="text-muted mb-4">
+                            Have a question that's not answered above? Fill out the form below and we'll get back to you as soon as possible.
+                        </p>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Note:</strong> For security and privacy reasons, please do not include sensitive personal information 
+                            in your message. If you need to discuss account-specific issues, please include your username.
+                        </div>
+                        
+                        <form method="post" action="{% url 'contact' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <select class="form-select" id="subject" name="subject" required>
+                                    <option value="">Select a subject...</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="safety">Safety Concern</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+                    
+                    <div class="text-center mt-5">
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+// Simple form submission handler (you can enhance this with AJAX)
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            // In a real implementation, you would send this via AJAX or handle server-side
+            // For now, we'll just show an alert
+            e.preventDefault();
+            alert('Thank you for your message! In a production environment, this would be sent to our support team. For now, please email us directly at support@matchup.com');
+        });
+    }
+});
+</script>
+{% endblock content %}
+
