@@ -34,4 +34,14 @@ urlpatterns = [
         views.ProfileDetail.as_view(),
         name='profile_detail',
     ),
+    path(
+        'preferences/create/',
+        views.PreferenceCreate.as_view(),
+        name='preference_create',
+    ),
+    path(
+        'preferences/edit/',
+        views.PreferenceUpdate.as_view(),
+        name='preference_update',
+    ),
 ]

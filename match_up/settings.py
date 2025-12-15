@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'cloudinary',
     'dating',
-    'connections',
+    'connections.apps.ConnectionsConfig',
 ]
 
 SITE_ID = 1
