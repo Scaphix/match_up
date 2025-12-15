@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-4">Profiles I Liked</h1>
+            
+            {% if profiles %}
+                <div class="row g-4">
+                    {% for profile in profiles %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card shadow-sm border-0 h-100">
+                            <div class="card-body p-4">
+                                <div class="text-center mb-3">
+                                    {% if profile.photo %}
+                                        <img src="{{ profile.photo.url }}" 
+                                             class="img-fluid rounded-circle mb-3" 
+                                             alt="{{ profile.user.username }}'s photo"
+                                             style="width: 120px; height: 120px; object-fit: cover;">
+                                    {% else %}
+                                        <img src="{% static 'images/nobody.jpg' %}" 
+                                             class="img-fluid rounded-circle mb-3" 
+                                             alt="No photo"
+                                             style="width: 120px; height: 120px; object-fit: cover;">
+                                    {% endif %}
+                                    
+                                    <h3 class="h5 mb-2">{{ profile.user.username }}</h3>
+                                </div>
+                                
+                                {% if profile.age %}
+                                    <p class="mb-2"><strong>Age:</strong> {{ profile.age }}</p>
+                                {% endif %}
+                                
+                                {% if profile.gender %}
+                                    <p class="mb-2"><strong>Gender:</strong> {{ profile.get_gender_display }}</p>
+                                {% endif %}
+                                
+                                {% if profile.location %}
+                                    <p class="mb-2"><strong>Location:</strong> {{ profile.location }}</p>
+                                {% endif %}
+                                
+                                {% if profile.bio %}
+                                    <p class="mb-3 text-muted">{{ profile.bio|truncatewords:15 }}</p>
+                                {% endif %}
+                                
+                                <div class="d-grid gap-2">
+                                    <a href="{% url 'profile_detail' pk=profile.id %}" 
+                                       class="btn btn-primary">
+                                        <i class="fas fa-eye me-2"></i>View Profile
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                {% if is_paginated %}
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            </li>
+                        {% endif %}
+                        
+                        <li class="page-item active">
+                            <span class="page-link">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                            </span>
+                        </li>
+                        
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            {% else %}
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-5 text-center">
+                        <i class="fas fa-heart fa-3x text-muted mb-3"></i>
+                        <h3 class="mb-3">No liked profiles yet</h3>
+                        <p class="text-muted mb-4">
+                            Start discovering profiles and like the ones you're interested in!
+                        </p>
+                        <a href="{% url 'connections:discover' %}" class="btn btn-primary">
+                            <i class="fas fa-search me-2"></i>Start Discovering
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock content %}
+
