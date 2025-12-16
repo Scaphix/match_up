@@ -302,10 +302,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* AUTH FORMS */
+/*sign up and sign in pages*/
+
 .auth-card {
     background-color: var(--white);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.auth-card h1{
+    color: var(--black);
+    font-family: var(--font-heading);
+}
+
+.auth-card i {
+    font-size: 3rem; 
+    color: var(--coral); 
+    margin-bottom: 1.5rem;
 }
 
 .form-control {
@@ -327,6 +339,22 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     color: var(--black);
     margin-bottom: 0.5rem;
+}
+.form-check-label {
+    font-family: var(--font-body);
+}
+
+.small a {
+    color: var(--black); 
+    text-decoration: none; opacity: 0.7;
+
+}
+
+
+.signup-link {
+    color: var(--coral); 
+    text-decoration: none; 
+    font-weight: 600;
 }
 
 .form-check-input:checked {
@@ -351,7 +379,136 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--black);
 }
 
+/* PROFILE DETAIL PAGE */
+.profile-detail-card {
+    border-left: 4px solid var(--coral);
+}
 
+/* Profile Buttons - Responsive with border radius */
+.btn-edit,
+.btn-delete {
+    background: var(--white);
+    border-color: var(--coral);
+    color: var(--coral);
+    box-shadow: 0 4px 15px rgba(255, 90, 122, 0.3);
+    font-family: var(--font-accent);
+    font-weight: 600;
+    padding: 0.55rem 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    border: 2px solid;
+    font-size: 0.75rem;
+    min-width: 140px;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+    background: var(--coral);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 90, 122, 0.3);
+}
+
+/* Profile Photo */
+.profile-photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--black);
+}
+
+/* Profile Information Layout */
+.profile-info {
+    color: var(--black);
+}
+
+/* Basic Info Badges (Age, Gender, Location) - Top Row */
+
+.info-badge {
+    background: var(--peach);
+    border: 2px solid var(--pink);
+    border-radius: 15px;
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+
+.info-label {
+    font-family: var(--font-accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--coral);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--black);
+    font-weight: 600;
+}
+
+/* Profile Boxes (Bio and Interests) */
+.profile-box {
+    background: var(--white);
+    border: 2px solid var(--coral);
+    border-radius: 20px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(255, 90, 122, 0.1);
+    transition: all 0.3s ease;
+}
+
+
+.profile-box-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--coral);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.profile-box-content {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    color: var(--black);
+    line-height: 1.7;
+    margin: 0;
+    opacity: 0.9;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+
+.profile-bio {
+    border-color: var(--coral);
+}
+
+.profile-interests {
+    border-color: var(--pink);
+}
+
+.profile-interests .profile-box-title {
+    color: var(--pink);
+}
 
 @media (min-width: 425px) {
     .matchup-logo { 
@@ -392,15 +549,73 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.25rem;
         font-weight: 400;
     }
+    .btn-edit,
+    .btn-delete {
+        padding: 0.75rem 2.5rem;
+        font-size: 0.9rem;
+    }
+    .profile-photo {
+        width: 200px;
+        height: 200px;
+        border-width: 4px;
+    }
+    .info-badge {
+        padding: 1rem 1.5rem;
+    }
+    
+    .info-label {
+        font-size: 0.85rem;
+    }
+    .info-value {
+        font-size: 1rem;
+    }
+    .profile-box {
+        padding: 1.5rem 2rem;
+        border-width: 3px;
+    }
+    .profile-box-title {
+        font-size: 1.5rem;
+    }
+    
+    .profile-box-content {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 768px) {
     .auth-card {
         padding: 2rem !important;
     }
-}
+    
+   
 
 @media (min-width: 768px) {
    
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
     
+    .btn-edit,
+    .btn-delete {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .info-badge {
+        padding: 0.875rem 1.25rem;
+    }
+    
+    .info-value {
+        font-size: 1.1rem;
+    }
+    
+    .profile-box {
+        padding: 1.25rem 1.5rem;
+    }
+    
+    .profile-box-title {
+        font-size: 1.25rem;
+    }
+}
 }

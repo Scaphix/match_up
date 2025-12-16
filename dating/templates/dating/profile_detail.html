@@ -4,36 +4,85 @@
 
 <main class="container py-5">
   <div class="row justify-content-center">
-      <div class="card shadow-sm border-0 col-lg-6 col-md-8">
-        <div class="card-body p-4">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h1 class="h4 mb-0 text-center flex-grow-1">
-              {% if profile.user == user %}
-                About me
-                <a href="{% url 'profile_update' %}" class="btn btn-outline-primary btn-sm">Edit Profile</a>
-                <a href="{% url 'profile_delete' %}" class="btn btn-outline-danger btn-sm">Delete Profile</a>
-              {% else %}
-                About {{ profile.user.username }}
-              {% endif %}
-            </h1>
+      <div class="col-lg-6 col-md-8">
+          <div class="auth-card profile-detail-card">
+              <div class="card-body p-4 p-md-5">
+                  <!-- Header with title and action buttons -->
+                  <div class="profile-header mb-4">
+                      <h1 class=" text-center mb-3">
+                          {% if profile.user == user %}
+                              About Me
+                          {% else %}
+                              About {{ profile.user.username }}
+                          {% endif %}
+                      </h1>
+                      {% if profile.user == user %}
+                          <div class=" d-flex flex-column flex-sm-row gap-2 justify-content-center mb-4">
+                              <a href="{% url 'profile_update' %}" class="btn btn-edit">Edit Profile</a>
+                              <a href="{% url 'profile_delete' %}" class="btn btn-delete">Delete Profile</a>
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <!-- Profile Photo -->
+                  <div class="profile-photo-container mb-4">
+                      <img src="{% if profile.photo %}{{ profile.photo.url }}{% else %}{% static 'images/nobody.jpg' %}{% endif %}" 
+                           class="profile-photo" 
+                           alt="Profile photo">
+                  </div>
+
+                  <!-- Profile Information -->
+                  <div class="profile-info">
+                      <!-- Age, Gender, Location - Top Row -->
+                      <div class="profile-basic-info mb-4">
+                          <div class="row g-3">
+                              {% if profile.age %}
+                                  <div class="col-sm-4 col-12">
+                                      <div class="info-badge">
+                                          <span class="info-label">Age</span>
+                                          <span class="info-value">{{ profile.age }}</span>
+                                      </div>
+                                  </div>
+                              {% endif %}
+                              
+                              {% if profile.gender %}
+                                  <div class="col-sm-4 col-12">
+                                      <div class="info-badge">
+                                          <span class="info-label">Gender</span>
+                                          <span class="info-value">{{ profile.get_gender_display }}</span>
+                                      </div>
+                                  </div>
+                              {% endif %}
+                              
+                              {% if profile.location %}
+                                  <div class="col-sm-4 col-12">
+                                      <div class="info-badge">
+                                          <span class="info-label">Location</span>
+                                          <span class="info-value">{{ profile.location }}</span>
+                                      </div>
+                                  </div>
+                              {% endif %}
+                          </div>
+                      </div>
+
+                      <!-- Bio Box -->
+                      {% if profile.bio %}
+                          <div class="profile-box profile-bio mb-4">
+                              <h3 class="profile-box-title">Bio</h3>
+                              <p class="profile-box-content">{{ profile.bio|truncatechars:100 }}</p>
+                          </div>
+                      {% endif %}
+
+                      <!-- Interests Box -->
+                      {% if profile.interests %}
+                          <div class="profile-box profile-interests">
+                              <h3 class="profile-box-title">Interests</h3>
+                              <p class="profile-box-content">{{ profile.interests|truncatechars:100 }}</p>
+                          </div>
+                      {% endif %}
+                  </div>
+              </div>
           </div>
-          <img src="{% if profile.photo %}{{ profile.photo.url }}{% else %}{% static 'images/nobody.jpg' %}{% endif %}" class="img-fluid mb-3 d-block mx-auto" alt="Profile photo">
-          {% if profile.bio %}
-            <p class="text-muted mb-3 text-center">{{ profile.bio }}</p>
-          {% endif %}
-          {% if profile.age %}
-            <p class="text-muted mb-3 text-center"><strong>Age:</strong> {{ profile.age }}</p>
-          {% endif %}
-          {% if profile.gender %}
-            <p class="text-muted mb-3 text-center"><strong>Gender:</strong> {{ profile.get_gender_display }}</p>
-          {% endif %}
-          {% if profile.location %}
-            <p class="text-muted mb-3 text-center"><strong>Location:</strong> {{ profile.location }}</p>
-          {% endif %}
-          {% if profile.interests %}
-            <p class="text-muted mb-3 text-center"><strong>Interests:</strong> {{ profile.interests }}</p>
-          {% endif %}
-        </div>
       </div>
   </div>
 </main>
