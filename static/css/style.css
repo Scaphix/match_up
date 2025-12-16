@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 .container {
     width: 90%;
     max-width: 1100px;
-    margin: 0;
+    margin: 0 auto;
 }
 
 
@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .matchup-logo img {
-    height: 55px;
+    height: 45px;
     padding: 10px;
 
 }
@@ -103,14 +103,19 @@ h1, h2, h3, h4, h5, h6 {
 .hero-headline {
     color: var(--black);
     line-height: 1;
-    font-size: 5rem; /* Large and bold */
+    font-size: 3rem; /* Large and bold */
 }
 
+.lead {
+    font-size: 1rem;
+    font-weight: 200;
+}
 
 /* Primary CTA Button (Passion Coral Gradient) */
 .cta {
+    font-size: 0.75rem;
     font-family: var(--font-accent);   
-    padding: 1rem 2.5rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 50px; /* Bubbly shape */   
     transition: all 0.3s ease;
     /* Micro-Animation: Gentle pulse/shift on hover */
@@ -218,17 +223,30 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.3;
 }
 .feature-title {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     color: var(--black);
 }
+/* Override Bootstrap card styles for feature cards */
+.features-section .card {
+    border: none;
+    background: transparent;
+}
+
 .feature-card {
-    padding: 2.5rem;
+    padding: 2rem;
     border-radius: 20px;
     color: var(--white);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     min-height: 250px;
     position: relative;
     overflow: hidden;
+    border: none;
+    background: transparent;
+}
+
+/* Override Bootstrap card-body default padding */
+.feature-card.card-body {
+    padding: 2rem;
 }
 
 /* Gradients for Feature Cards */
@@ -258,21 +276,24 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
 }
 
-
-.feature-card h3 {
+/* Bootstrap card classes within feature cards */
+.card-title {
     font-family: var(--font-accent);
-    font-weight: 700;
+    font-weight: 500;
     margin-bottom: 0.5rem;
     color: var(--white);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.feature-card p {
+.card-text {
     font-family: var(--font-body);
     color: var(--white);
-    font-weight: 400;
+    font-weight: 200;
     opacity: 0.9;
+    margin-bottom: 0;
+   
 }
+
 .footer a {
     text-decoration: none;
     font-size: 1rem;
@@ -337,6 +358,40 @@ h1, h2, h3, h4, h5, h6 {
         gap: 0.75rem;
         font-size: 2rem;
     }
+    .matchup-logo img {
+        height: 55px;
+    
+    }
+    .hero-headline {
+        color: var(--black);
+        line-height: 1;
+        font-size: 5rem; /* Large and bold */
+    }
+    .lead {
+        font-size: 1.25rem;
+        font-weight: 400;
+    }
+    .cta {
+        font-size: 1.25rem;
+        padding: 1rem 2.5rem;
+        border-radius: 50px; 
+       
+    }   
+    .feature-title {
+        font-size: 2.5rem;
+    } 
+    .feature-card {
+        padding: 2.5rem; 
+    }
+    .card-title {
+        font-weight: 700;
+        font-size: 2rem;
+    }
+    
+    .card-text {
+        font-size: 1.25rem;
+        font-weight: 400;
+    }
 }
 
 @media (max-width: 768px) {
@@ -345,3 +400,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+@media (min-width: 768px) {
+   
+    
+}
