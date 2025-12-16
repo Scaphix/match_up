@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 .container {
     width: 90%;
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 
@@ -60,9 +60,8 @@ h1, h2, h3, h4, h5, h6 {
 .matchup-logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 1.3rem;
     color: var(--black);
     text-decoration: none;
 }
@@ -331,6 +330,14 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--black);
 }
 
+
+
+@media (min-width: 425px) {
+    .matchup-logo { 
+        gap: 0.75rem;
+        font-size: 2rem;
+    }
+}
 
 @media (max-width: 768px) {
     .auth-card {
