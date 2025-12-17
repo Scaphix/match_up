@@ -12,7 +12,7 @@
                     {% for match_data in match_profiles %}
                         {% with match=match_data.match profile=match_data.profile %}
                         <div class="col-md-6 col-lg-4">
-                            <div class="card shadow-sm border-0 h-100 match-card">
+                            <div class="auth-card border-0 h-100 match-card">
                                 <div class="card-body p-4 text-center">
                                     {% if profile.photo %}
                                         <img src="{{ profile.photo.url }}" 
@@ -86,7 +86,7 @@
                 </nav>
                 {% endif %}
             {% else %}
-                <div class="card shadow-sm border-0">
+                <div class="auth-card border-0">
                     <div class="card-body p-5 text-center">
                         <i class="fas fa-heart fa-3x text-muted mb-3"></i>
                         <h3 class="mb-3">No matches yet</h3>
@@ -94,8 +94,8 @@
                             Start discovering profiles and like the ones you're interested in. 
                             When they like you back, you'll have a match!
                         </p>
-                        <a href="{% url 'connections:discover' %}" class="btn btn-primary">
-                            <i class="fas fa-search me-2"></i>Start Discovering
+                        <a href="{% url 'connections:discover' %}" class="btn cta primary">
+                            <i class="fas fa-search me-2 "></i>Start Discovering
                         </a>
                     </div>
                 </div>

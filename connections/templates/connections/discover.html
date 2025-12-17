@@ -49,15 +49,15 @@
                                 <a href="{% url 'connections:like_profile' profile_id=profile.id %}" 
                                     class="btn"
                                     data-profile-id="{{ profile.id }}">
-                                    <i class="icon fas fa-heart me-2"></i>Like
+                                    <i class="icon fas fa-heart me-2 like-btn"></i>Like
                                 </a>
                                 <a href="{% url 'connections:pass_profile' profile_id=profile.id %}" 
                                     class="btn"
                                     data-profile-id="{{ profile.id }}">
-                                    <i class="fas fa-times me-2"></i>Pass
+                                    <i class="fas fa-times me-2 pass-btn"></i>Pass
                                 </a>
                                 <a href="{% url 'profile_detail' pk=profile.id %}" 
-                                    class="btn">
+                                    class="btn view-btn">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </div>
@@ -109,65 +109,5 @@
     </div>
 </main>
 
-<script>
-// Handle like/pass buttons with AJAX
-document.addEventListener('DOMContentLoaded', function() {
-    const likeButtons = document.querySelectorAll('.like-btn');
-    const passButtons = document.querySelectorAll('.pass-btn');
-    
-    function handleAction(button, action) {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const url = this.href;
-            const profileCard = this.closest('.profile-card');
-            
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}',
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Show success message
-                    const alert = document.createElement('div');
-                    alert.className = 'alert alert-success alert-dismissible fade show';
-                    alert.innerHTML = data.message + 
-                        '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
-                    profileCard.parentNode.insertBefore(alert, profileCard);
-                    
-                    // Remove profile card after a short delay
-                    setTimeout(() => {
-                        profileCard.style.transition = 'opacity 0.5s';
-                        profileCard.style.opacity = '0';
-                        setTimeout(() => profileCard.remove(), 500);
-                    }, 1000);
-                    
-                    // If it's a match, show special message
-                    if (data.is_match) {
-                        setTimeout(() => {
-                            alert.className = 'alert alert-warning alert-dismissible fade show';
-                            alert.innerHTML = '🎉 It\'s a match! Check your matches page.' +
-                                '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
-                        }, 1500);
-                    }
-                } else {
-                    alert('Error: ' + data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Fallback to normal link behavior
-                window.location.href = url;
-            });
-        });
-    }
-    
-    likeButtons.forEach(btn => handleAction(btn, 'like'));
-    passButtons.forEach(btn => handleAction(btn, 'pass'));
-});
-</script>
 {% endblock content %}
 
