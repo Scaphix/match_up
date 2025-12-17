@@ -37,6 +37,7 @@ body {
     font-family: var(--font-body);
 }
 
+
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 800; /* Poppins ExtraBold */
@@ -50,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-.dark-bg .main-bg {
+.main-bg {
     background-color: var(--white);
 }
 
@@ -314,9 +315,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
 }
 
-.auth-card i {
-    font-size: 3rem; 
-    color: var(--coral); 
+.feature-icon {
+    font-size: 1.5rem; 
+    color: var(--white); 
     margin-bottom: 1.5rem;
 }
 
@@ -386,7 +387,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Profile Buttons - Responsive with border radius */
 .btn-edit,
-.btn-delete {
+.btn-delete
+ {
     background: var(--white);
     border-color: var(--coral);
     color: var(--coral);
@@ -410,6 +412,16 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--white);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(255, 90, 122, 0.3);
+}
+
+/* Profile List Buttons - Like, Pass, View */
+
+
+.icon a,
+.icon i,
+i.icon {
+    font-size: 1rem;
+    color:var(--brand-gradient);
 }
 
 /* Profile Photo */
@@ -475,6 +487,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
 .profile-box-title {
     font-family: var(--font-heading);
     font-weight: 800;
@@ -510,6 +523,8 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--pink);
 }
 
+
+
 @media (min-width: 425px) {
     .matchup-logo { 
         gap: 0.75rem;
@@ -540,6 +555,11 @@ h1, h2, h3, h4, h5, h6 {
     .feature-card {
         padding: 2.5rem; 
     }
+
+    .feature-icon {
+        font-size: 2rem;
+    }
+
     .card-title {
         font-weight: 700;
         font-size: 2rem;
@@ -554,6 +574,20 @@ h1, h2, h3, h4, h5, h6 {
         padding: 0.75rem 2.5rem;
         font-size: 0.9rem;
     }
+  
+    .btn-view {
+        min-width: 60px;
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+    }
+ 
+    .icon a,
+    .icon i,
+    i.icon {
+        font-size: 1rem;
+    }
+   
+    
     .profile-photo {
         width: 200px;
         height: 200px;
@@ -588,9 +622,19 @@ h1, h2, h3, h4, h5, h6 {
     }
     
    
+    .btn-view {
+        width: 100%;
+        min-width: auto;
+        margin-bottom: 0.5rem;
+    }
+    
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+}
 
 @media (min-width: 768px) {
-   
     .profile-photo {
         width: 150px;
         height: 150px;
@@ -617,5 +661,5 @@ h1, h2, h3, h4, h5, h6 {
     .profile-box-title {
         font-size: 1.25rem;
     }
-}
+  
 }

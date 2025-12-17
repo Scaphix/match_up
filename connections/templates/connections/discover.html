@@ -2,17 +2,16 @@
 {% load static %}
 
 {% block content %}
-<main class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
+<main class="container py-3">
             <h1 class="text-center mb-4">Discover</h1>
-            
+       <div class="row ">
+       
             {% if profiles %}
+                 <div class="row"> 
                 {% for profile in profiles %}
-                <div class="card shadow-sm border-0 mb-4 profile-card">
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-md-4 text-center mb-3 mb-md-0">
+                <div class=" col-12 col-md-6 col-lg-4  mb-4">
+                        <div class="auth-card p-4">
+                            <div class="text-center mb-3">
                                 {% if profile.photo %}
                                     <img src="{{ profile.photo.url }}" 
                                          class="img-fluid rounded profile-photo" 
@@ -23,8 +22,8 @@
                                          alt="No photo">
                                 {% endif %}
                             </div>
-                            <div class="col-md-8">
-                                <h2 class="h4 mb-3">{{ profile.user.username }}</h2>
+                            <div class="col-md-8 m-auto" >
+                                <h2 class="h4 mb-3 text-center">{{ profile.user.username }}</h2>
                                 
                                 {% if profile.age %}
                                     <p class="mb-2"><strong>Age:</strong> {{ profile.age }}</p>
@@ -45,24 +44,24 @@
                                 {% if profile.interests %}
                                     <p class="mb-3"><strong>Interests:</strong> {{ profile.interests }}</p>
                                 {% endif %}
-                                
-                                <div class="d-flex gap-2 mt-4">
-                                    <a href="{% url 'connections:like_profile' profile_id=profile.id %}" 
-                                       class="btn btn-primary btn-lg flex-fill like-btn"
-                                       data-profile-id="{{ profile.id }}">
-                                        <i class="fas fa-heart me-2"></i>Like
-                                    </a>
-                                    <a href="{% url 'connections:pass_profile' profile_id=profile.id %}" 
-                                       class="btn btn-outline-secondary btn-lg flex-fill pass-btn"
-                                       data-profile-id="{{ profile.id }}">
-                                        <i class="fas fa-times me-2"></i>Pass
-                                    </a>
-                                    <a href="{% url 'profile_detail' pk=profile.id %}" 
-                                       class="btn btn-outline-info btn-lg">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </div>
+                          
+                            <div class="icon d-flex gap-2 mt-4">
+                                <a href="{% url 'connections:like_profile' profile_id=profile.id %}" 
+                                    class="btn"
+                                    data-profile-id="{{ profile.id }}">
+                                    <i class="icon fas fa-heart me-2"></i>Like
+                                </a>
+                                <a href="{% url 'connections:pass_profile' profile_id=profile.id %}" 
+                                    class="btn"
+                                    data-profile-id="{{ profile.id }}">
+                                    <i class="fas fa-times me-2"></i>Pass
+                                </a>
+                                <a href="{% url 'profile_detail' pk=profile.id %}" 
+                                    class="btn">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -93,20 +92,20 @@
                 </nav>
                 {% endif %}
             {% else %}
-                <div class="card shadow-sm border-0">
+                <div class="auth-card border-0">
                     <div class="card-body p-5 text-center">
                         <i class="fas fa-search fa-3x text-muted mb-3"></i>
                         <h3 class="mb-3">No more profiles to discover</h3>
                         <p class="text-muted mb-4">
                             You've seen all available profiles. Check back later for new matches!
                         </p>
-                        <a href="{% url 'connections:liked_profiles' %}" class="btn btn-primary">
+                        <a href="{% url 'connections:liked_profiles' %}" class="btn btn-edit">
                             View Profiles I Liked
                         </a>
                     </div>
                 </div>
+                </div>
             {% endif %}
-        </div>
     </div>
 </main>
 
