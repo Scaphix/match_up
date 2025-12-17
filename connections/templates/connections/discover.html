@@ -2,112 +2,110 @@
 {% load static %}
 
 {% block content %}
-<main class="container py-3">
-            <h1 class="text-center mb-4">Discover</h1>
-       <div class="row ">
-       
-            {% if profiles %}
-                 <div class="row"> 
-                {% for profile in profiles %}
-                <div class=" col-12 col-md-6 col-lg-4  mb-4">
-                        <div class="auth-card p-4">
-                            <div class="text-center mb-3">
-                                {% if profile.photo %}
-                                    <img src="{{ profile.photo.url }}" 
-                                         class="img-fluid rounded profile-photo" 
-                                         alt="{{ profile.user.username }}'s photo">
-                                {% else %}
-                                    <img src="{% static 'images/nobody.jpg' %}" 
-                                         class="img-fluid rounded profile-photo" 
-                                         alt="No photo">
-                                {% endif %}
-                            </div>
-                            <div class="col-md-8 m-auto" >
-                                <h2 class="h4 mb-3 text-center">{{ profile.user.username }}</h2>
-                                
-                                {% if profile.age %}
-                                    <p class="mb-2"><strong>Age:</strong> {{ profile.age }}</p>
-                                {% endif %}
-                                
-                                {% if profile.gender %}
-                                    <p class="mb-2"><strong>Gender:</strong> {{ profile.get_gender_display }}</p>
-                                {% endif %}
-                                
-                                {% if profile.location %}
-                                    <p class="mb-2"><strong>Location:</strong> {{ profile.location }}</p>
-                                {% endif %}
-                                
-                                {% if profile.bio %}
-                                    <p class="mb-3 text-muted">{{ profile.bio|truncatewords:30 }}</p>
-                                {% endif %}
-                                
-                                {% if profile.interests %}
-                                    <p class="mb-3"><strong>Interests:</strong> {{ profile.interests }}</p>
-                                {% endif %}
-                          
-                            <div class="icon d-flex gap-2 mt-4">
-                                <a href="{% url 'connections:like_profile' profile_id=profile.id %}" 
-                                    class="btn"
-                                    data-profile-id="{{ profile.id }}">
-                                    <i class="icon fas fa-heart me-2 like-btn"></i>Like
-                                </a>
-                                <a href="{% url 'connections:pass_profile' profile_id=profile.id %}" 
-                                    class="btn"
-                                    data-profile-id="{{ profile.id }}">
-                                    <i class="fas fa-times me-2 pass-btn"></i>Pass
-                                </a>
-                                <a href="{% url 'profile_detail' pk=profile.id %}" 
-                                    class="btn view-btn">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                            </div>
-                            
-                        </div>
+<h1 class="text-center mb-4">Discover</h1>
+<div class="row ">
+
+    {% if profiles %}
+            <div class="row"> 
+        {% for profile in profiles %}
+        <div class=" col-12 col-md-6 col-lg-4  mb-4">
+                <div class="auth-card p-4">
+                    <div class="text-center mb-3">
+                        {% if profile.photo %}
+                            <img src="{{ profile.photo.url }}" 
+                                    class="img-fluid rounded profile-photo" 
+                                    alt="{{ profile.user.username }}'s photo">
+                        {% else %}
+                            <img src="{% static 'images/nobody.jpg' %}" 
+                                    class="img-fluid rounded profile-photo" 
+                                    alt="No photo">
+                        {% endif %}
                     </div>
-                </div>
-                {% endfor %}
-                
-                <!-- Pagination -->
-                {% if is_paginated %}
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                        {% if page_obj.has_previous %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-                            </li>
+                    <div class="col-md-8 m-auto" >
+                        <h2 class="h4 mb-3 text-center">{{ profile.user.username }}</h2>
+                        
+                        {% if profile.age %}
+                            <p class="mb-2"><strong>Age:</strong> {{ profile.age }}</p>
                         {% endif %}
                         
-                        <li class="page-item active">
-                            <span class="page-link">
-                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                            </span>
-                        </li>
-                        
-                        {% if page_obj.has_next %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
-                            </li>
+                        {% if profile.gender %}
+                            <p class="mb-2"><strong>Gender:</strong> {{ profile.get_gender_display }}</p>
                         {% endif %}
-                    </ul>
-                </nav>
-                {% endif %}
-            {% else %}
-                <div class="auth-card border-0">
-                    <div class="card-body p-5 text-center">
-                        <i class="fas fa-search fa-3x text-muted mb-3"></i>
-                        <h3 class="mb-3">No more profiles to discover</h3>
-                        <p class="text-muted mb-4">
-                            You've seen all available profiles. Check back later for new matches!
-                        </p>
-                        <a href="{% url 'connections:liked_profiles' %}" class="btn btn-edit">
-                            View Profiles I Liked
+                        
+                        {% if profile.location %}
+                            <p class="mb-2"><strong>Location:</strong> {{ profile.location }}</p>
+                        {% endif %}
+                        
+                        {% if profile.bio %}
+                            <p class="mb-3 text-muted">{{ profile.bio|truncatewords:30 }}</p>
+                        {% endif %}
+                        
+                        {% if profile.interests %}
+                            <p class="mb-3"><strong>Interests:</strong> {{ profile.interests }}</p>
+                        {% endif %}
+                    
+                    <div class="icon d-flex gap-2 mt-4">
+                        <a href="{% url 'connections:like_profile' profile_id=profile.id %}" 
+                            class="btn like-btn"
+                            data-profile-id="{{ profile.id }}">
+                            <i class="icon fas fa-heart me-2"></i>Like
+                        </a>
+                        <a href="{% url 'connections:pass_profile' profile_id=profile.id %}" 
+                            class="btn pass-btn"
+                            data-profile-id="{{ profile.id }}">
+                            <i class="fas fa-times me-2"></i>Pass
+                        </a>
+                        <a href="{% url 'profile_detail' pk=profile.id %}" 
+                            class="btn view-btn">
+                            <i class="fas fa-eye"></i>
                         </a>
                     </div>
+                    
                 </div>
-                </div>
-            {% endif %}
-    </div>
-</main>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <!-- Pagination -->
+        {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+                
+                <li class="page-item active">
+                    <span class="page-link">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    </span>
+                </li>
+                
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    {% else %}
+        <div class="auth-card border-0">
+            <div class="card-body p-5 text-center">
+                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                <h3 class="mb-3">No more profiles to discover</h3>
+                <p class="text-muted mb-4">
+                    You've seen all available profiles. Check back later for new matches!
+                </p>
+                <a href="{% url 'connections:liked_profiles' %}" class="btn btn-edit">
+                    View Profiles I Liked
+                </a>
+            </div>
+        </div>
+        </div>
+    {% endif %}
+</div>
 
 {% endblock content %}
 
