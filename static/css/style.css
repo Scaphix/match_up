@@ -552,6 +552,12 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--coral);
     color: var(--coral);
 }
+
+.img-fluid {
+    width: 120px; 
+    height: 120px; 
+    object-fit: cover;
+}
 @media (min-width: 425px) {
     .matchup-logo { 
         gap: 0.75rem;
@@ -636,6 +642,12 @@ h1, h2, h3, h4, h5, h6 {
     .profile-box-content {
         font-size: 1rem;
     }
+
+    .img-fluid {
+    width: 200px; 
+    height: 200px; 
+    
+}
 }
 
 @media (max-width: 768px) {

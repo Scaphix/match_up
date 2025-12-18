@@ -16,13 +16,11 @@
                                     {% if profile.photo %}
                                         <img src="{{ profile.photo.url }}" 
                                              class="img-fluid rounded-circle mb-3" 
-                                             alt="{{ profile.user.username }}'s photo"
-                                             style="width: 120px; height: 120px; object-fit: cover;">
+                                             alt="{{ profile.user.username }}'s photo">
                                     {% else %}
                                         <img src="{% static 'images/nobody.jpg' %}" 
                                              class="img-fluid rounded-circle mb-3" 
-                                             alt="No photo"
-                                             style="width: 120px; height: 120px; object-fit: cover;">
+                                             alt="No photo">
                                     {% endif %}
                                     
                                     <h3 class="h5 mb-2">{{ profile.user.username }}</h3>
