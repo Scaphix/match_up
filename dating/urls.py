@@ -34,16 +34,6 @@ urlpatterns = [
         views.ProfileDetail.as_view(),
         name='profile_detail',
     ),
-    path(
-        'preferences/create/',
-        views.PreferenceCreate.as_view(),
-        name='preference_create',
-    ),
-    path(
-        'preferences/edit/',
-        views.PreferenceUpdate.as_view(),
-        name='preference_update',
-    ),
     path('about/', views.AboutView.as_view(), name='about'),
     path('contact/', views.ContactView.as_view(), name='contact'),
 ]

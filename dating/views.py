@@ -5,22 +5,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib import messages
-from .models import Profile, Preference
-from .forms import PreferenceForm
+from .models import Profile
 
 
 class Home(generic.TemplateView):
     template_name = 'dating/index.html'
-
-
-class AboutView(generic.TemplateView):
-    """About page for Match Up"""
-    template_name = 'dating/about.html'
-
-
-class ContactView(generic.TemplateView):
-    """Contact page for Match Up"""
-    template_name = 'dating/contact.html'
 
 
 class ProfileGetStarted(generic.TemplateView):
@@ -33,10 +22,6 @@ class ProfileGetStarted(generic.TemplateView):
 
 
 class ProfileList(LoginRequiredMixin, generic.ListView):
-    """
-    Redirect to connections discover view for better filtering.
-    Kept for backward compatibility but redirects to discovery feed.
-    """
     model = Profile
     template_name = 'dating/profile_list.html'
     context_object_name = 'profiles'
@@ -48,8 +33,14 @@ class ProfileList(LoginRequiredMixin, generic.ListView):
                 'You must create a profile to browse other profiles.'
             )
             return redirect('profile_create')
-        # Redirect to connections discover view
-        return redirect('connections:discover')
+        return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = Profile.objects.all().order_by("-createdAt")
+        # Exclude current user's profile if they have one
+        if hasattr(self.request.user, 'profile'):
+            queryset = queryset.exclude(user=self.request.user)
+        return queryset
 
 
 class ProfileCreate(LoginRequiredMixin, generic.CreateView):
@@ -134,87 +125,10 @@ class ProfileAbout(LoginRequiredMixin, generic.DetailView):
         return self.request.user.profile
 
 
-class PreferenceCreate(LoginRequiredMixin, generic.CreateView):
-    """
-    Create user matching preferences.
-    Should be created after profile creation.
-    """
-    model = Preference
-    form_class = PreferenceForm
-    template_name = 'dating/preference_form.html'
-
-    def get(self, request, *args, **kwargs):
-        """Check if user has a profile and doesn't already have preferences"""
-        if not hasattr(request.user, 'profile'):
-            messages.info(
-                request,
-                'You must create a profile before setting preferences.'
-            )
-            return redirect('profile_create')
-
-        # Check if preferences already exist
-        if hasattr(request.user, 'preference'):
-            messages.info(
-                request,
-                'You already have preferences. You can edit them instead.'
-            )
-            return redirect('preference_update')
-
-        return super().get(request, *args, **kwargs)
-
-    def form_valid(self, form):
-        """Set the user for the preference"""
-        form.instance.user = self.request.user
-        try:
-            return super().form_valid(form)
-        except IntegrityError:
-            form.add_error(
-                None,
-                "You already have preferences. Please edit them instead."
-            )
-            return self.form_invalid(form)
-
-    def get_success_url(self):
-        """Redirect to discovery after creating preferences"""
-        messages.success(
-            self.request,
-            'Your preferences have been saved! Start discovering matches.'
-        )
-        return reverse_lazy('connections:discover')
+class AboutView(generic.TemplateView):
+    template_name = 'dating/about.html'
 
 
-class PreferenceUpdate(LoginRequiredMixin, generic.UpdateView):
-    """
-    Update existing user matching preferences.
-    """
-    model = Preference
-    form_class = PreferenceForm
-    template_name = 'dating/preference_form.html'
+class ContactView(generic.TemplateView):
+    template_name = 'dating/contact.html'
 
-    def get(self, request, *args, **kwargs):
-        """Check if user has a profile and preferences"""
-        if not hasattr(request.user, 'profile'):
-            messages.info(
-                request,
-                'You must create a profile before setting preferences.'
-            )
-            return redirect('profile_create')
-
-        # Check if preferences exist, if not redirect to create
-        if not hasattr(request.user, 'preference'):
-            messages.info(
-                request,
-                'You don\'t have preferences yet. Create them first.'
-            )
-            return redirect('preference_create')
-
-        return super().get(request, *args, **kwargs)
-
-    def get_object(self):
-        """Get the current user's preference"""
-        return self.request.user.preference
-
-    def get_success_url(self):
-        """Redirect to profile about page after updating"""
-        messages.success(self.request, 'Your preferences have been updated!')
-        return reverse_lazy('profile_about')
