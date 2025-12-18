@@ -24,7 +24,6 @@
 }
 
 
-
 * {
     margin: 0;
     padding: 0;
@@ -272,8 +271,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+   
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
     display: inline-block;
 }
 
@@ -302,6 +302,8 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--black);
 }
 
+
+
 /* AUTH FORMS */
 /*sign up and sign in pages*/
 
@@ -315,11 +317,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
 }
 
-.feature-icon {
-    font-size: 1.5rem; 
-    color: var(--white); 
-    margin-bottom: 1.5rem;
-}
 
 .form-control {
     border: 2px solid rgba(26, 26, 31, 0.1);
@@ -415,14 +412,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Profile List Buttons - Like, Pass, View */
-
-
-.icon a,
-.icon i,
-i.icon {
-    font-size: 1rem;
-    color:var(--brand-gradient);
+.like-btn,
+.pass-btn,
+.view-btn {
+    background: var(--white);
+    color: var(--coral);
+    border-radius: 50px;
+    font-family: var(--font-accent);
+    font-weight: 200;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+ 
 }
+
+.like-btn:hover,
+.pass-btn:hover,
+.view-btn:hover {
+    background: var(--coral);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 90, 122, 0.4);
+}
+
+#icon {
+    color: var(--coral);
+}
+
 
 /* Profile Photo */
 .profile-photo-container {
@@ -524,7 +542,16 @@ i.icon {
 }
 
 
-
+.page-item.active .page-link {
+    background-color: var(--coral);
+    border-color: var(--coral);
+    color: var(--white);
+}
+.page-item .page-link {
+    background-color: var(--white);
+    border-color: var(--coral);
+    color: var(--coral);
+}
 @media (min-width: 425px) {
     .matchup-logo { 
         gap: 0.75rem;
@@ -581,11 +608,6 @@ i.icon {
         padding: 0.75rem 1rem;
     }
  
-    .icon a,
-    .icon i,
-    i.icon {
-        font-size: 1rem;
-    }
    
     
     .profile-photo {
