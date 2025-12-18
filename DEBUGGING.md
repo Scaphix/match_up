@@ -412,5 +412,44 @@ The local SQLite database file (`db.sqlite3`) was being tracked in Git, which is
 2. Removed from Git history if already committed
 3. Documented that only migration files and fixtures should be version controlled
 
+---
 
+### Bug #13: Profile Cards Displaying Unnecessary Fields
+**Severity:** Low  
+**Status:** ✅ Fixed
 
+**Description:**
+Profile discovery cards were displaying bio and interests fields, which resulted in cards of varying lengths—a poor UX design. The location field was also optional, allowing incomplete profiles to be created.
+
+**Root Cause:**
+1. Profile card templates included all profile fields (bio, interests)
+2. `Location` field in the Profile model had `blank=True`, making it optional
+
+**Fix Applied:**
+1. Removed `bio` and `interests` fields from profile card display (template updates)
+2. Made `location` field mandatory by removing `blank=True` from the model:
+
+```python
+# BEFORE (dating/models.py, line 14)
+location = models.CharField(max_length=100, blank=True)
+
+# AFTER (dating/models.py, line 14)
+location = models.CharField(max_length=100)
+```
+
+3. Updated profile creation form to enforce location as required field
+4. Generated new migration for model changes
+
+**Files Modified:**
+- `dating/models.py` (line 14)
+- Profile card templates (removed bio and interests display)
+- `dating/forms.py` (form field validation)
+
+**Migration:**
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+**Result:**
+Profile cards are now more concise, displaying only essential information (age, gender, location, photo), and all profiles guarantee complete location data.
