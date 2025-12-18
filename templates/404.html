@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center height" >
+    <div class="text-center">
+        <div class="title">
+            404
+        </div>
+        
+        <h1 class="mb-3 h1" >
+            It's Not You, It's Us... 
+        </h1>
+        
+        <div class="auth-card p-4 mb-4 page" >
+            <p >
+                Page Not Found (404)
+            </p>
+            <p >
+                The page you're looking for went on a coffee date and never came back. 
+            </p>
+            
+            <div class="icon d-flex gap-2 justify-content-center">
+                <i class="fas fa-heartbreak fa-2x" style="color: var(--coral);"></i>
+                <i class="fas fa-search fa-2x" style="color: var(--coral);"></i>
+                <i class="fas fa-map-marked-alt fa-2x" style="color: var(--coral);"></i>
+            </div>
+        </div>
+        
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="/" class="btn btn-edit">
+                <i class="fas fa-home me-2"></i>Back to Home
+            </a>
+            <a href="{% url 'connections:discover' %}" class="btn btn-edit">
+                <i class="fas fa-heart me-2"></i>Keep Swiping
+            </a>
+        </div>
+        
+        <p style="margin-top: 40px; color: #999; font-size: 0.9rem;">
+            <em>Pro tip: Check the URL and try again. Sometimes typos are deal-breakers too!</em>
+        </p>
+    </div>
+</div>
+
+
+
+{% endblock content %}

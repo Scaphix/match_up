@@ -25,3 +25,6 @@ urlpatterns = [
     path("account/", include("allauth.urls")),
     path('admin/', admin.site.urls),
 ]
+
+# Custom error handlers
+handler404 = 'django.views.defaults.page_not_found'
