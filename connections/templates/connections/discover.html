@@ -35,14 +35,6 @@
                         {% if profile.location %}
                             <p class="mb-2"><strong>Location:</strong> {{ profile.location }}</p>
                         {% endif %}
-                        
-                        {% if profile.bio %}
-                            <p class="mb-3 text-muted">{{ profile.bio|truncatewords:30 }}</p>
-                        {% endif %}
-                        
-                        {% if profile.interests %}
-                            <p class="mb-3"><strong>Interests:</strong> {{ profile.interests }}</p>
-                        {% endif %}
                     
                     <div class="icon d-flex gap-2 mt-4">
                         <a href="{% url 'connections:like_profile' profile_id=profile.id %}" 
