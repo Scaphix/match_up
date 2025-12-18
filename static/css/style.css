@@ -401,6 +401,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid;
     font-size: 0.75rem;
     min-width: 140px;
+    max-width: 400px;
 }
 
 .btn-edit:hover,
@@ -541,6 +542,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--pink);
 }
 
+/* Pagination buttons */
 
 .page-item.active .page-link {
     background-color: var(--coral);
@@ -553,11 +555,38 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--coral);
 }
 
+/* Profile images size */
 .img-fluid {
     width: 120px; 
     height: 120px; 
     object-fit: cover;
 }
+
+/* form style*/
+#id_age {
+width: 50px;
+}
+
+#id_location, #id_interests {
+width: 120px;
+}
+
+#id_bio {
+
+width:200px;
+height:100px;
+}
+
+
+
+/* Override Bootstrap d-grid for full-width layout */
+.d-grid {
+    display: flex !important;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 @media (min-width: 425px) {
     .matchup-logo { 
         gap: 0.75rem;
@@ -646,8 +675,12 @@ h1, h2, h3, h4, h5, h6 {
     .img-fluid {
     width: 200px; 
     height: 200px; 
-    
+   }
+   #id_bio {
+    width:300px;
+    height:200px;
 }
+
 }
 
 @media (max-width: 768px) {
@@ -695,5 +728,8 @@ h1, h2, h3, h4, h5, h6 {
     .profile-box-title {
         font-size: 1.25rem;
     }
-  
+   #id_bio {
+    width:400px;
+    height:200px;
+}
 }

@@ -4,8 +4,8 @@
 
 
   <div class="row justify-content-center">
-      <div class="auth-card border-0 col-lg-6 col-md-8">
-        <div class="card-body p-4">
+      <div class="auth-card col-lg-6 col-md-8">
+        <div class="card-body">
           <h1 class="h4 mb-3 text-center">Edit Profile</h1>
           <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
             {% csrf_token %}
@@ -14,6 +14,9 @@
               <button type="submit" class="btn btn-edit">
                 Save profile
               </button>
+              <a href="{% url 'profile_detail' pk=request.user.profile.id %}" class="btn btn-edit">
+                Return
+              </a>
             </div>
           </form>
         </div>
