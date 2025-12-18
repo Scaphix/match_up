@@ -22,7 +22,7 @@ class DiscoverView(LoginRequiredMixin, ListView):
     model = Profile
     template_name = 'connections/discover.html'
     context_object_name = 'profiles'
-    paginate_by = 10
+    paginate_by = 3
 
     def get(self, request, *args, **kwargs):
         """Check if user has a profile before allowing discovery"""
@@ -193,7 +193,7 @@ class MatchesListView(LoginRequiredMixin, ListView):
     model = Match
     template_name = 'connections/matches.html'
     context_object_name = 'matches'
-    paginate_by = 10
+    paginate_by = 3
 
     def get(self, request, *args, **kwargs):
         """Check if user has a profile"""
@@ -247,7 +247,7 @@ class LikedProfilesView(LoginRequiredMixin, ListView):
     model = Profile
     template_name = 'connections/liked_profiles.html'
     context_object_name = 'profiles'
-    paginate_by = 10
+    paginate_by = 3
 
     def get(self, request, *args, **kwargs):
         """Check if user has a profile"""
