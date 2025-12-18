@@ -13,11 +13,11 @@
                     <div class="text-center mb-3">
                         {% if profile.photo %}
                             <img src="{{ profile.photo.url }}" 
-                                    class="img-fluid rounded profile-photo" 
+                                    class="img-fluid rounded-circle profile-photo" 
                                     alt="{{ profile.user.username }}'s photo">
                         {% else %}
                             <img src="{% static 'images/nobody.jpg' %}" 
-                                    class="img-fluid rounded profile-photo" 
+                                    class="img-fluid rounded-circle profile-photo" 
                                     alt="No photo">
                         {% endif %}
                     </div>

@@ -16,36 +16,30 @@
                                     {% if profile.photo %}
                                         <img src="{{ profile.photo.url }}" 
                                              class="img-fluid rounded-circle mb-3 match-photo" 
-                                             alt="{{ profile.user.username }}'s photo"
-                                             style="width: 150px; height: 150px; object-fit: cover;">
+                                             alt="{{ profile.user.username }}'s photo">
                                     {% else %}
                                         <img src="{% static 'images/nobody.jpg' %}" 
                                              class="img-fluid rounded-circle mb-3 match-photo" 
-                                             alt="No photo"
-                                             style="width: 150px; height: 150px; object-fit: cover;">
+                                             alt="No photo">
                                     {% endif %}
                                     
                                     <h3 class="h5 mb-2">{{ profile.user.username }}</h3>
                                     
                                     {% if profile.age %}
-                                        <p class="text-muted mb-1"><strong>Age:</strong> {{ profile.age }}</p>
+                                        <p class=" mb-1"><strong>Age:</strong> {{ profile.age }}</p>
                                     {% endif %}
                                     
                                     {% if profile.location %}
-                                        <p class="text-muted mb-3"><strong>Location:</strong> {{ profile.location }}</p>
-                                    {% endif %}
-                                    
-                                    {% if profile.bio %}
-                                        <p class="mb-3">{{ profile.bio|truncatewords:20 }}</p>
+                                        <p class=" mb-3"><strong>Location:</strong> {{ profile.location }}</p>
                                     {% endif %}
                                     
                                     <div class="d-flex gap-2 justify-content-center">
                                         <a href="{% url 'profile_detail' pk=profile.id %}" 
-                                           class="btn btn-primary">
+                                           class="btn like-btn">
                                             <i class="fas fa-user me-2"></i>View Profile
                                         </a>
-                                        <button class="btn btn-outline-primary" disabled>
-                                            <i class="fas fa-comments me-2"></i>Message
+                                        <button class="btn like-btn" disabled>
+                                            <i class="fas fa-comments me-2 "></i>Message
                                             <small class="d-block">Coming Soon</small>
                                         </button>
                                     </div>
@@ -87,7 +81,7 @@
             {% else %}
                 <div class="auth-card border-0 ">
                     <div class="card-body text-center">
-                        <i class="fas fa-heart fa-3x text-muted mb-3"></i>
+                        <i class="fas fa-heart fa-3x mb-3" id="icon"></i>
                         <h3 class="mb-3">No matches yet</h3>
                         <p class="text-muted mb-4">
                             Start discovering profiles and like the ones you're interested in. 
