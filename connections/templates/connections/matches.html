@@ -35,7 +35,7 @@
                                     
                                     <div class="d-flex gap-2 justify-content-center">
                                         <a href="{% url 'profile_detail' pk=profile.id %}" 
-                                           class="btn like-btn">
+                                           class="btn like-btn" onclick="openLink('/profile/{{ profile.id }}/?origin=matches');">
                                             <i class="fas fa-user me-2"></i>View Profile
                                         </a>
                                         <button class="btn like-btn" disabled>
