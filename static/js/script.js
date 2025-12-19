@@ -1,3 +1,9 @@
+// Helper function to open a link
+
+function openLink(link) {
+    window.location.href = link;
+}
+
 
 // Handle like/pass buttons with AJAX
 document.addEventListener('DOMContentLoaded', function() {
@@ -43,6 +49,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function openLink(link) {
-    window.location.href = link;
-}
+// Handle return to discover button
+
+document.addEventListener('DOMContentLoaded', function() {
+    const origin = new URLSearchParams(window.location.search).get('origin');
+    if (origin === 'liked_profiles') {
+        const returnToDiscoverButton = document.querySelector('.return-to-discover');
+        returnToDiscoverButton.href = '/connections/liked/';
+    }
+});
