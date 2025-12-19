@@ -8,13 +8,18 @@
               <div class="card-body p-4 p-md-5">
                   <!-- Header with title and action buttons -->
                   <div class="profile-header mb-4">
-                      <h1 class=" text-center mb-3">
+                      <h1 class="text-center mb-3">
                           {% if profile.user == user %}
                               About Me
                           {% else %}
                               About {{ profile.user.username }}
                           {% endif %}
                       </h1>
+                      {% if profile.user != user %}
+                          <div class="text-center mb-4">
+                              <a href="{% url 'connections:discover' %}" class="btn btn-edit">Return to Discover</a>
+                          </div>
+                      {% endif %}
                       {% if profile.user == user %}
                           <div class=" d-flex flex-column flex-sm-row gap-2 justify-content-center mb-4">
                               <a href="{% url 'profile_update' %}" class="btn btn-edit">Edit Profile</a>
@@ -79,8 +84,7 @@
                               <p class="profile-box-content">{{ profile.interests|truncatechars:100 }}</p>
                           </div>
                       {% endif %}
-                  </div>
-              </div>
+                  
           </div>
       </div>
   </div>
