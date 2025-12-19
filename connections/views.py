@@ -16,8 +16,7 @@ from .services import get_discoverable_profiles
 class DiscoverView(LoginRequiredMixin, ListView):
     """
     Display profiles for discovery feed using service function.
-    Shows profiles filtered by preferences and excludes already
-    interacted profiles.
+    Shows all profiles, excludes already interacted profiles.
     """
     model = Profile
     template_name = 'connections/discover.html'
