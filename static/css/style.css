@@ -611,6 +611,17 @@ height:100px;
          font-weight: bold;
     }
 
+    .profile-card {
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    
+    .profile-card.fade-out {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    
+
+
 @media (min-width: 425px) {
     .matchup-logo { 
         gap: 0.75rem;
