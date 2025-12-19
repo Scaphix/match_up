@@ -14,9 +14,16 @@
               <button type="submit" class="btn btn-edit">
                 Save profile
               </button>
+              {% if request.user.profile %}
               <a href="{% url 'profile_detail' pk=request.user.profile.id %}" class="btn btn-edit">
                 Return
               </a>
+              {% else %}
+                <a href="{% url 'home' %}" class="btn btn-edit">
+                  Return
+                </a>
+              {% endif %}
+            </div>
             </div>
           </form>
         </div>
