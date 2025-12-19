@@ -2,10 +2,15 @@
 {% load static %}
 
 {% block content %}
-    <div class="row">
+    <div id="matches-page" class="row">
         <div class="col-12">
             <h1 class="text-center mb-4">My Matches</h1>
-            
+         
+            <div id="new-match-alert" class="alert alert-warning alert-dismissible fade" role="alert">
+                <strong>🎉 You have a new match! 🎉</strong> 
+                </div>
+         
+
             {% if match_profiles %}
                 <div class="row g-4">
                     {% for match_data in match_profiles %}

@@ -29,6 +29,29 @@ function handleProfileDetailOrigin() {
     }
 }
 
+function handleNewMatch() {
+    // Check if we are on the matches page
+    const matchesPage = document.getElementById('matches-page');
+
+    if (!matchesPage) {
+        return;
+    }
+    
+    // Check if we have a new match
+    const newMatch = new URLSearchParams(window.location.search).get('new_match');
+    if (newMatch === 'true') {
+        let alert = document.getElementById('new-match-alert');
+        
+        if (alert) {
+            // Create alert if it doesn't exist
+                
+                alert.classList.add('show');
+             
+        }
+    }
+}
+ 
+
 function handleLikeButtons() {
     document.querySelectorAll('.like-btn, .pass-btn').forEach(button => {
         button.addEventListener('click', function(e) {
@@ -52,11 +75,15 @@ function handleLikeButtons() {
 
                 let result = await response.json();
                 if (result.success) {
-                    myProfileCard.classList.add('fade-out');
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 400);
-                    
+                    if (result.is_match) {
+                        window.location.href = `/connections/matches/?new_match=true`;
+                    }
+                    else {
+                        myProfileCard.classList.add('fade-out');
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 400);
+                    }
                 } else {
                     throw new Error(result.error);
                 }
@@ -73,4 +100,5 @@ function handleLikeButtons() {
 document.addEventListener('DOMContentLoaded', function() {
     handleLikeButtons();
     handleProfileDetailOrigin();
+    handleNewMatch();
 });
