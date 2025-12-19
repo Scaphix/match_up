@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (result.success) {
                     myProfileCard.classList.add('fade-out');
                     setTimeout(() => {
-                        
+                        window.location.reload();
                     }, 400);
                     
                 } else {
