@@ -546,6 +546,26 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--pink);
 }
 
+.gender-M {  
+    h3, .info-label {
+        color: var(--black) !important;
+    }
+
+    .info-badge {
+    
+        color: var(--black);
+    }
+
+    .profile-box-title {
+        color: var(--black);
+       
+    }
+
+    .profile-box-content {
+        color: var(--black);
+    }
+}
+
 /* Pagination buttons */
 
 .page-item.active .page-link {
@@ -689,7 +709,7 @@ height:100px;
         border-width: 4px;
     }
     .info-badge {
-        padding: 1rem 1.5rem;
+        padding: 1rem 0rem;
     }
     
     .info-label {
@@ -771,3 +791,4 @@ height:100px;
     height:200px;
 }
 }
+
