@@ -546,25 +546,24 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--pink);
 }
 
-.gender-M {  
-    h3, .info-label {
+.gender-M h3, 
+.gender-M .info-label {  
         color: var(--black) !important;
     }
 
-    .info-badge {
+.gender-M .info-badge {
     
         color: var(--black);
     }
 
-    .profile-box-title {
+.gender-M .profile-box-title {
         color: var(--black);
        
     }
 
-    .profile-box-content {
+.gender-M .profile-box-content {
         color: var(--black);
     }
-}
 
 /* Pagination buttons */
 
