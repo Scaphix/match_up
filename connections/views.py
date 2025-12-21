@@ -1,6 +1,7 @@
 """
 Views for connection-related functionality (likes, matches, discovery)
 """
+from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
@@ -93,6 +94,15 @@ class LikeProfileView(LoginRequiredMixin, View):
                 Like.objects.create(
                     from_user=request.user,
                     to_user=target_profile.user,
+                    action=Like.LIKE
+                )
+
+            # Create a match if the target profile is user 5
+            if target_profile.user.id == 5:
+                print("Creating match")
+                Like.objects.create(
+                    from_user=User.objects.get(id=5),
+                    to_user=request.user,
                     action=Like.LIKE
                 )
 
