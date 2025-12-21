@@ -89,6 +89,51 @@ def get_success_url(self):
 
 ---
 
+### Bug #14: 500 Error When Creating New Profile
+**Severity:** High  
+**Status:** ✅ Fixed
+
+**Description:**
+When creating a new profile, the profile form template was trying to access `request.user.profile.id` even though the user doesn't have a profile yet. This caused a `NoReverseMatch` error with an empty `pk` value.
+
+**Error Message:**
+
+django.urls.exceptions.NoReverseMatch: Reverse for 'profile_detail' with keyword arguments '{'pk': ''}'
+not found. 1 pattern(s) tried: ['profile/(?P<pk>[0-9]+)/\\Z']
+
+
+**Root Cause:**
+
+```python
+<!-- BEFORE (dating/templates/dating/profile_form.html, line 17) -->
+<a href="{% url 'profile_detail' pk=request.user.profile.id %}" class="btn btn-edit">
+    Return
+</a>
+```
+
+The template was accessing request.user.profile.id without checking if the profile exists first.
+
+**Fix Applied:**
+Added a conditional check to only show the profile detail link if the user has a profile, otherwise redirect to home:
+
+```python
+<!-- AFTER (dating/templates/dating/profile_form.html, lines 17-25) -->
+{% if request.user.profile %}
+    <a href="{% url 'profile_detail' pk=request.user.profile.id %}" class="btn btn-edit">
+        Return
+    </a>
+{% else %}
+    <a href="{% url 'home' %}" class="btn btn-edit">
+        Return
+    </a>
+{% endif %}
+```
+
+**Files Modified:**
+`dating/templates/dating/profile_form.html` (lines 17-25)
+
+---
+
 ## Authentication & Navigation Bugs
 
 ### Bug #3: Login and Logout Links Not Working
@@ -361,6 +406,76 @@ The navigation bar was completely hidden on mobile and tablet devices due to Boo
 
 ---
 
+
+
+**Bug #15: New Match Alert Not Showing**
+- Location: Add after Bug #10 (around line 361)
+- Documentation:
+arkdown
+### Bug #15: New Match Alert Not Showing
+**Severity:** Medium  
+**Status:** ✅ Fixed
+
+**Description:**
+The new match alert on the matches page wasn't showing when navigating to the matches page with `?new_match=true` query parameter. The alert element was conditionally rendered in the template based on a Django context variable, but the JavaScript was checking for a URL query parameter.
+
+**Root Cause:**
+<!-- BEFORE (connections/templates/connections/matches.html, line 8) -->
+{% if new_match %}
+<div class="alert alert-warning alert-dismissible fade" role="alert">
+    ...
+</div>
+{% endif %}
+```
+The template only rendered the alert if the Django context variable `new_match` was True, but the JavaScript checked for the URL query parameter `new_match=true`. If the view didn't pass `new_match` in context, the alert element didn't exist in the DOM.
+
+// BEFORE (static/js/script.js, lines 32-48)
+function handleNewMatch() {
+    const matchesPage = document.getElementById('matches-page');
+    const newMatch = new URLSearchParams(window.location.search).get('new_match');
+    if (newMatch === 'true') {
+        const alert = matchesPage.querySelector('.alert');
+        if (alert) {
+            alert.classList.add('show');
+        }
+    }
+}
+
+**Fix Applied:**
+Always render the alert in the template with an ID (hidden by default):
+
+```html
+<!-- AFTER (connections/templates/connections/matches.html, line 8) -->
+ <div id="new-match-alert" class="alert alert-warning alert-dismissible fade" role="alert">    <strong>🎉 You have a new match! 🎉</strong></div>
+ ```
+
+Updated JavaScript to show the alert when query parameter is present:
+
+```javascript
+// AFTER (static/js/script.js, lines 32-48)
+
+// AFTER (static/js/script.js, lines 32-48)
+function handleNewMatch() {
+    const matchesPage = document.getElementById('matches-page');
+    if (!matchesPage) return;
+    
+    const newMatch = new URLSearchParams(window.location.search).get('new_match');
+    if (newMatch === 'true') {
+        const alert = document.getElementById('new-match-alert');
+        if (alert) {
+            alert.style.display = 'block';
+            alert.classList.add('show');
+        }
+    }
+}
+```
+
+**Files Modified:**
+- `connections/templates/connections/matches.html` (line 8)
+- `static/js/script.js` (lines 32-48)
+
+---
+
 ## Deployment & Environment Bugs
 
 ### Bug #11: Cloudinary Configuration Issues
@@ -428,7 +543,6 @@ Profile discovery cards were displaying bio and interests fields, which resulted
 **Fix Applied:**
 1. Removed `bio` and `interests` fields from profile card display (template updates)
 2. Made `location` field mandatory by removing `blank=True` from the model:
-
 ```python
 # BEFORE (dating/models.py, line 14)
 location = models.CharField(max_length=100, blank=True)
@@ -453,3 +567,6 @@ python manage.py migrate
 
 **Result:**
 Profile cards are now more concise, displaying only essential information (age, gender, location, photo), and all profiles guarantee complete location data.
+
+
+
