@@ -19,16 +19,15 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | connections | [matches.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/ matches.html) |  ![screenshot](documentation/validation/html-matches.png) | 
 | dating | [about.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/about.html) |  ![screenshot](documentation/validation/html-dating-about.png) | 
 | dating | [contact.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/contact.html) |  ![screenshot](documentation/validation/html-dating-contact.png) | 
-| dating | [index.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/index.html) |  ![screenshot](documentation/validation/html-dating-index.png) | 
+| dating | [index.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/index.html) |  ![screenshot](documentation/validation/html-index.png) | 
 | dating | [profile_delete.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_delete.html)  | ![screenshot](documentation/validation/html-profile_delete.png) | 
 | dating | [profile_detail.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_detail.html)  | ![screenshot](documentation/validation/html-profile_detail.png) | 
 | dating | [profile_form.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_form.html) | ![screenshot](documentation/validation/html-dating-profile_form.png) | 
 | dating | [profile_list.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_list.html)  | ![screenshot](documentation/validation/html-dating-profile_list.png) | 
 | templates | [404.html](https://github.com/Scaphix/match_up/blob/main/templates/404.html) |  ![screenshot](documentation/validation/html-404.png) | 
-| templates | [logout.html](https://github.com/Scaphix/match_up/blob/main/templates/idp/oidc/logout.html) |  ![screenshot](documentation/validation/html-templates-logout.png) | 
-| templates | [login.html](https://github.com/Scaphix/match_up/blob/main/templates/account/login.html) |  ![screenshot](documentation/validation/html-templates-login.png) | 
-| templates | [logout.html](https://github.com/Scaphix/match_up/blob/main/templates/account/logout.html) |  ![screenshot](documentation/validation/html-templates-logout.png) | 
-| templates | [signup.html](https://github.com/Scaphix/match_up/blob/main/templates/account/signup.html) |  ![screenshot](documentation/validation/html-templates-signup.png) | 
+| templates | [login.html](https://github.com/Scaphix/match_up/blob/main/templates/account/login.html) |  ![screenshot](documentation/validation/html-login.png) | 
+| templates | [logout.html](https://github.com/Scaphix/match_up/blob/main/templates/account/logout.html) |  ![screenshot](documentation/validation/html-logout.png) | 
+| templates | [signup.html](https://github.com/Scaphix/match_up/blob/main/templates/account/signup.html) |  ![screenshot](documentation/validation/html-signup.png) | 
 
 ### CSS
 
