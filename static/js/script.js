@@ -8,27 +8,6 @@ function getCSRFToken() {
     return document.querySelector('[name=csrfmiddlewaretoken]')?.value;
 }
 
-function handleProfileDetailOrigin() {
-    // Check if the origin is set
-    const origin = new URLSearchParams(window.location.search).get('origin');
-    if (!origin) {
-        return;
-    }
-
-    // Check if the return to discover button exists
-    const returnToDiscoverButton = document.querySelector('.return-to-discover');
-    if (!returnToDiscoverButton) {
-        return;
-    }
-
-    // Set the href of the return to discover button based on the origin
-    if (origin === 'liked_profiles') {
-        returnToDiscoverButton.href = '/connections/liked/';
-    } else if (origin === 'matches') {
-        returnToDiscoverButton.href = '/connections/matches/';
-    }
-}
-
 function handleNewMatch() {
     // Check if we are on the matches page
     const matchesPage = document.getElementById('matches-page');
@@ -99,6 +78,5 @@ function handleLikeButtons() {
 // Handle like/pass buttons with AJAX
 document.addEventListener('DOMContentLoaded', function() {
     handleLikeButtons();
-    handleProfileDetailOrigin();
     handleNewMatch();
 });

@@ -47,7 +47,7 @@
                             data-profile-id="{{ profile.id }}">
                             <i class="fas fa-times me-2"></i>Pass
                         </a>
-                        <a href="{% url 'profile_detail' pk=profile.id %}" 
+                        <a href="{% url 'profile_detail' pk=profile.id %}?origin={{ request.get_full_path | urlencode }}" 
                             class="btn view-btn">
                             <i class="fas fa-eye"></i>
                         </a>

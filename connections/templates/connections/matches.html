@@ -39,7 +39,7 @@
                                     {% endif %}
                                     
                                     <div class="d-flex gap-2 justify-content-center">
-                                        <a href="{% url 'profile_detail' pk=profile.id %}?origin=matches" 
+                                        <a href="{% url 'profile_detail' pk=profile.id %}?origin={{request.get_full_path | urlencode}}" 
                                            class="btn view-btn">
                                             <i class="fas fa-user me-2"></i>View Profile
                                         </a>

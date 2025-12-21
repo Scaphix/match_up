@@ -1,6 +1,7 @@
 from django.db import IntegrityError
 from django.forms import ValidationError
 from django.views import generic
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
@@ -108,6 +109,17 @@ class ProfileDetail(LoginRequiredMixin, generic.DetailView):
     model = Profile
     template_name = 'dating/profile_detail.html'
     context_object_name = 'profile'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['next_url'] = '/connections/discover/'
+
+        next_url = self.request.GET.get('origin')
+        if next_url and url_has_allowed_host_and_scheme(
+                        url=next_url, allowed_hosts=self.request.get_host()):
+            context['next_url'] = next_url
+
+        return context
 
 
 class ProfileAbout(LoginRequiredMixin, generic.DetailView):
