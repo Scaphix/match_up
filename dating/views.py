@@ -5,7 +5,6 @@ from django.utils.http import url_has_allowed_host_and_scheme
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
-from django.contrib import messages
 from .models import Profile
 
 
@@ -20,28 +19,6 @@ class ProfileGetStarted(generic.TemplateView):
         if not hasattr(request.user, 'profile'):
             return redirect('profile_create')
         return redirect('profile_about')
-
-
-class ProfileList(LoginRequiredMixin, generic.ListView):
-    model = Profile
-    template_name = 'dating/profile_list.html'
-    context_object_name = 'profiles'
-
-    def get(self, request, *args, **kwargs):
-        if not hasattr(request.user, 'profile'):
-            messages.info(
-                request,
-                'You must create a profile to browse other profiles.'
-            )
-            return redirect('profile_create')
-        return super().get(request, *args, **kwargs)
-
-    def get_queryset(self):
-        queryset = Profile.objects.all().order_by("-createdAt")
-        # Exclude current user's profile if they have one
-        if hasattr(self.request.user, 'profile'):
-            queryset = queryset.exclude(user=self.request.user)
-        return queryset
 
 
 class ProfileCreate(LoginRequiredMixin, generic.CreateView):
@@ -142,4 +119,3 @@ class AboutView(generic.TemplateView):
 
 class ContactView(generic.TemplateView):
     template_name = 'dating/contact.html'
-
