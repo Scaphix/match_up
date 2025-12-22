@@ -112,7 +112,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 # X-Frame-Options settings
 # Allow same-origin iframes (prevents clickjacking while allowing legitimate embedding)
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = 'ALLOW-FROM https://ui.dev/'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
