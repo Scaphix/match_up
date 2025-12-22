@@ -34,9 +34,9 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate all of my CSS files.
 
-| Directory | File | URL | Screenshot | Notes |
-| --- | --- | --- | --- | --- |
-| static | [style.css](https://github.com/Scaphix/match_up/blob/main/static/css/style.css) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/css-static-style.png) | ⚠️ Notes (if applicable) |
+| Directory | File | Screenshot |
+| --- | --- | --- |
+| static | [style.css](https://github.com/Scaphix/match_up/blob/main/static/css/style.css) | ![screenshot](documentation/validation/css-style.png) | 
 
 
 ### JavaScript
@@ -44,36 +44,33 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 
 I have used the recommended [JShint Validator](https://jshint.com) to validate all of my JS files.
 
-| Directory | File | URL | Screenshot | Notes |
-| --- | --- | --- | --- | --- |
-| static | [script.js](https://github.com/Scaphix/match_up/blob/main/static/js/script.js) |  | ![screenshot](documentation/validation/js-static-script.png) | ⚠️ Notes (if applicable) |
+| Directory | File | Screenshot | 
+| --- | --- | --- | 
+| static | [script.js](https://github.com/Scaphix/match_up/blob/main/static/js/script.js) | ![screenshot](documentation/validation/js-script.png) |
 
 
 ### Python
 
 
-
-
 I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com) to validate all of my Python files.
 
-| Directory | File | URL | Screenshot | Notes |
-| --- | --- | --- | --- | --- |
-| connections | [admin.py](https://github.com/Scaphix/match_up/blob/main/connections/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/admin.py) | ![screenshot](documentation/validation/py-connections-admin.png) | ⚠️ Notes (if applicable) |
-| connections | [models.py](https://github.com/Scaphix/match_up/blob/main/connections/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/models.py) | ![screenshot](documentation/validation/py-connections-models.png) | ⚠️ Notes (if applicable) |
-| connections | [services.py](https://github.com/Scaphix/match_up/blob/main/connections/services.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/services.py) | ![screenshot](documentation/validation/py-connections-services.png) | ⚠️ Notes (if applicable) |
-| connections | [signals.py](https://github.com/Scaphix/match_up/blob/main/connections/signals.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/signals.py) | ![screenshot](documentation/validation/py-connections-signals.png) | ⚠️ Notes (if applicable) |
-| connections | [tests.py](https://github.com/Scaphix/match_up/blob/main/connections/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/tests.py) | ![screenshot](documentation/validation/py-connections-tests.png) | ⚠️ Notes (if applicable) |
-| connections | [urls.py](https://github.com/Scaphix/match_up/blob/main/connections/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/urls.py) | ![screenshot](documentation/validation/py-connections-urls.png) | ⚠️ Notes (if applicable) |
-| connections | [views.py](https://github.com/Scaphix/match_up/blob/main/connections/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/views.py) | ![screenshot](documentation/validation/py-connections-views.png) | ⚠️ Notes (if applicable) |
-| dating | [admin.py](https://github.com/Scaphix/match_up/blob/main/dating/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/admin.py) | ![screenshot](documentation/validation/py-dating-admin.png) | ⚠️ Notes (if applicable) |
-| dating | [forms.py](https://github.com/Scaphix/match_up/blob/main/dating/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/forms.py) | ![screenshot](documentation/validation/py-dating-forms.png) | ⚠️ Notes (if applicable) |
-| dating | [models.py](https://github.com/Scaphix/match_up/blob/main/dating/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/models.py) | ![screenshot](documentation/validation/py-dating-models.png) | ⚠️ Notes (if applicable) |
-| dating | [tests.py](https://github.com/Scaphix/match_up/blob/main/dating/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/tests.py) | ![screenshot](documentation/validation/py-dating-tests.png) | ⚠️ Notes (if applicable) |
-| dating | [urls.py](https://github.com/Scaphix/match_up/blob/main/dating/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/urls.py) | ![screenshot](documentation/validation/py-dating-urls.png) | ⚠️ Notes (if applicable) |
-| dating | [views.py](https://github.com/Scaphix/match_up/blob/main/dating/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/views.py) | ![screenshot](documentation/validation/py-dating-views.png) | ⚠️ Notes (if applicable) |
-|  | [manage.py](https://github.com/Scaphix/match_up/blob/main/manage.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/manage.py) | ![screenshot](documentation/validation/py--manage.png) | ⚠️ Notes (if applicable) |
-| match_up | [settings.py](https://github.com/Scaphix/match_up/blob/main/match_up/settings.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/match_up/settings.py) | ![screenshot](documentation/validation/py-match_up-settings.png) | ⚠️ Notes (if applicable) |
-| match_up | [urls.py](https://github.com/Scaphix/match_up/blob/main/match_up/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/match_up/urls.py) | ![screenshot](documentation/validation/py-match_up-urls.png) | ⚠️ Notes (if applicable) |
+| Directory | File | URL | Screenshot | 
+| --- | --- | --- | --- | 
+| connections | [admin.py](https://github.com/Scaphix/match_up/blob/main/connections/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/admin.py) | ![screenshot](documentation/validation/connections-admin.png) | 
+| connections | [models.py](https://github.com/Scaphix/match_up/blob/main/connections/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/models.py) | ![screenshot](documentation/validation/connections-models.png) | 
+| connections | [services.py](https://github.com/Scaphix/match_up/blob/main/connections/services.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/services.py) | ![screenshot](documentation/validation/connections-services.png) | 
+| connections | [signals.py](https://github.com/Scaphix/match_up/blob/main/connections/signals.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/signals.py) | ![screenshot](documentation/validation/connections-signals.png) | 
+| connections | [tests.py](https://github.com/Scaphix/match_up/blob/main/connections/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/tests.py) | ![screenshot](documentation/validation/connections-tests.png) | 
+| connections | [urls.py](https://github.com/Scaphix/match_up/blob/main/connections/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/urls.py) | ![screenshot](documentation/validation/connections-urls.png) | 
+| connections | [views.py](https://github.com/Scaphix/match_up/blob/main/connections/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/connections/views.py) | ![screenshot](documentation/validation/connections-views.png) | 
+| dating | [admin.py](https://github.com/Scaphix/match_up/blob/main/dating/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/admin.py) | ![screenshot](documentation/validation/dating-admin.png) |  
+| dating | [models.py](https://github.com/Scaphix/match_up/blob/main/dating/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/models.py) | ![screenshot](documentation/validation/dating-models.png) | 
+| dating | [tests.py](https://github.com/Scaphix/match_up/blob/main/dating/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/tests.py) | ![screenshot](documentation/validation/dating-tests.png) | 
+| dating | [urls.py](https://github.com/Scaphix/match_up/blob/main/dating/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/urls.py) | ![screenshot](documentation/validation/dating-urls.png) | 
+| dating | [views.py](https://github.com/Scaphix/match_up/blob/main/dating/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/dating/views.py) | ![screenshot](documentation/validation/dating-views.png) | 
+|  | [manage.py](https://github.com/Scaphix/match_up/blob/main/manage.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/manage.py) | ![screenshot](documentation/validation/manage.png) | 
+| match_up | [settings.py](https://github.com/Scaphix/match_up/blob/main/match_up/settings.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/match_up/settings.py) | ![screenshot](documentation/validation/match-up-settings.png) | 
+| match_up | [urls.py](https://github.com/Scaphix/match_up/blob/main/match_up/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/match_up/urls.py) | ![screenshot](documentation/validation/match-up-urls.png) | 
 
 
 ## Responsiveness

@@ -37,7 +37,6 @@ def get_discoverable_profiles(user, preferences=None, order_by='newest'):
     ).values_list('to_user_id', flat=True)
     queryset = queryset.exclude(user_id__in=disliked_user_ids)
 
-
     # Apply ordering
     if order_by == 'random':
         queryset = queryset.order_by('?')

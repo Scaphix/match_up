@@ -9,9 +9,12 @@ class Like(models.Model):
     DISLIKE = 'dislike'
     ACTION_CHOICES = [(LIKE, 'Like'), (DISLIKE, 'Dislike')]
 
-    from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes_sent')
-    to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes_received')
-    action = models.CharField(max_length=10, choices=ACTION_CHOICES, default=LIKE)
+    from_user = models.ForeignKey(
+                User, on_delete=models.CASCADE, related_name='likes_sent')
+    to_user = models.ForeignKey(
+                User, on_delete=models.CASCADE, related_name='likes_received')
+    action = models.CharField(
+                max_length=10, choices=ACTION_CHOICES, default=LIKE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -23,7 +26,7 @@ class Like(models.Model):
         ]
 
     def __str__(self):
-        return f"{self.from_user.username} {self.action}s {self.to_user.username}"
+        return f"{self.from_user.username} {self.action}s {self.to_user.username}"  # noqa: E501
 
     def save(self, *args, **kwargs):
         if self.from_user == self.to_user:
@@ -32,8 +35,10 @@ class Like(models.Model):
 
 
 class Match(models.Model):
-    user1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='matches_as_user1')
-    user2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='matches_as_user2')
+    user1 = models.ForeignKey(
+            User, on_delete=models.CASCADE, related_name='matches_as_user1')
+    user2 = models.ForeignKey(
+            User, on_delete=models.CASCADE, related_name='matches_as_user2')
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
