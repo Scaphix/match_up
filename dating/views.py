@@ -3,6 +3,7 @@ from django.forms import ValidationError
 from django.views import generic
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from .models import Profile
@@ -29,7 +30,14 @@ class ProfileCreate(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         try:
-            return super().form_valid(form)
+            response = super().form_valid(form)
+            # Add success message after profile is created
+            messages.success(
+                self.request,
+                'Profile successfully created! '
+                'You can now browse other profiles.'
+            )
+            return response
         except IntegrityError:
             # Show a friendly error on the page instead of a 400
             form.add_error(None, "You already have a profile.")
@@ -62,6 +70,15 @@ class ProfileUpdate(LoginRequiredMixin, generic.UpdateView):
     def get_object(self):
         return self.request.user.profile
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        # Add success message after profile is updated
+        messages.success(
+            self.request,
+            'Your profile has been successfully updated!'
+        )
+        return response
+
     def get_success_url(self):
         return reverse_lazy('profile_about')
 
@@ -77,6 +94,14 @@ class ProfileDelete(LoginRequiredMixin, generic.DeleteView):
 
     def get_object(self):
         return self.request.user.profile
+
+    def post(self, request, *args, **kwargs):
+        # Add success message BEFORE deletion and redirect
+        messages.success(
+            request,
+            'Your profile has been successfully deleted.'
+        )
+        return self.delete(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse_lazy('home')
