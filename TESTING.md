@@ -15,15 +15,14 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | Directory | File  | Screenshot | 
 | --- | --- | --- | 
 | connections | [discover.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/discover.html) | ![screenshot](documentation/validation/html-discover.png) | 
-| connections | [liked_profiles.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/liked_profiles.html) |  ![screenshot](documentation/validation/html-connections-liked_profiles.png) | 
+| connections | [liked_profiles.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/liked_profiles.html) |  ![screenshot](documentation/validation/html-liked_profiles.png) | 
 | connections | [matches.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/ matches.html) |  ![screenshot](documentation/validation/html-matches.png) | 
 | dating | [about.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/about.html) |  ![screenshot](documentation/validation/html-dating-about.png) | 
 | dating | [contact.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/contact.html) |  ![screenshot](documentation/validation/html-dating-contact.png) | 
 | dating | [index.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/index.html) |  ![screenshot](documentation/validation/html-index.png) | 
 | dating | [profile_delete.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_delete.html)  | ![screenshot](documentation/validation/html-profile_delete.png) | 
 | dating | [profile_detail.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_detail.html)  | ![screenshot](documentation/validation/html-profile_detail.png) | 
-| dating | [profile_form.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_form.html) | ![screenshot](documentation/validation/html-dating-profile_form.png) | 
-| dating | [profile_list.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_list.html)  | ![screenshot](documentation/validation/html-dating-profile_list.png) | 
+| dating | [profile_form.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_form.html) | ![screenshot](documentation/validation/html-profile_form.png) | 
 | templates | [404.html](https://github.com/Scaphix/match_up/blob/main/templates/404.html) |  ![screenshot](documentation/validation/html-404.png) | 
 | templates | [login.html](https://github.com/Scaphix/match_up/blob/main/templates/account/login.html) |  ![screenshot](documentation/validation/html-login.png) | 
 | templates | [logout.html](https://github.com/Scaphix/match_up/blob/main/templates/account/logout.html) |  ![screenshot](documentation/validation/html-logout.png) | 
@@ -73,35 +72,6 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 | match_up | [urls.py](https://github.com/Scaphix/match_up/blob/main/match_up/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Scaphix/match_up/main/match_up/urls.py) | ![screenshot](documentation/validation/match-up-urls.png) | 
 
 
-## Responsiveness
-
-
-I've tested my deployed project to check for responsiveness issues.
-
-| Page | Mobile | Tablet | Desktop | Notes |
-| --- | --- | --- | --- | --- |
-| Register | ![screenshot](documentation/responsiveness/mobile-register.png) | ![screenshot](documentation/responsiveness/tablet-register.png) | ![screenshot](documentation/responsiveness/desktop-register.png) | Works as expected |
-| Login | ![screenshot](documentation/responsiveness/mobile-login.png) | ![screenshot](documentation/responsiveness/tablet-login.png) | ![screenshot](documentation/responsiveness/desktop-login.png) | Works as expected |
-| Home | ![screenshot](documentation/responsiveness/mobile-home.png) | ![screenshot](documentation/responsiveness/tablet-home.png) | ![screenshot](documentation/responsiveness/desktop-home.png) | Works as expected |
-| Add Blog | ![screenshot](documentation/responsiveness/mobile-add-blog.png) | ![screenshot](documentation/responsiveness/tablet-add-blog.png) | ![screenshot](documentation/responsiveness/desktop-add-blog.png) | Works as expected |
-| Edit Blog | ![screenshot](documentation/responsiveness/mobile-edit-blog.png) | ![screenshot](documentation/responsiveness/tablet-edit-blog.png) | ![screenshot](documentation/responsiveness/desktop-edit-blog.png) | Works as expected |
-| Blog Post | ![screenshot](documentation/responsiveness/mobile-blog-post.png) | ![screenshot](documentation/responsiveness/tablet-blog-post.png) | ![screenshot](documentation/responsiveness/desktop-blog-post.png) | Works as expected |
-| 404 | ![screenshot](documentation/responsiveness/mobile-404.png) | ![screenshot](documentation/responsiveness/tablet-404.png) | ![screenshot](documentation/responsiveness/desktop-404.png) | Works as expected |
-
-## Browser Compatibility
-
-
-I've tested my deployed project on multiple browsers to check for compatibility issues.
-
-| Page | Chrome | Firefox | Safari | Notes |
-| --- | --- | --- | --- | --- |
-| Register | ![screenshot](documentation/browsers/chrome-register.png) | ![screenshot](documentation/browsers/firefox-register.png) | ![screenshot](documentation/browsers/safari-register.png) | Works as expected |
-| Login | ![screenshot](documentation/browsers/chrome-login.png) | ![screenshot](documentation/browsers/firefox-login.png) | ![screenshot](documentation/browsers/safari-login.png) | Works as expected |
-| Home | ![screenshot](documentation/browsers/chrome-home.png) | ![screenshot](documentation/browsers/firefox-home.png) | ![screenshot](documentation/browsers/safari-home.png) | Works as expected |
-| Add Blog | ![screenshot](documentation/browsers/chrome-add-blog.png) | ![screenshot](documentation/browsers/firefox-add-blog.png) | ![screenshot](documentation/browsers/safari-add-blog.png) | Works as expected |
-| Edit Blog | ![screenshot](documentation/browsers/chrome-edit-blog.png) | ![screenshot](documentation/browsers/firefox-edit-blog.png) | ![screenshot](documentation/browsers/safari-edit-blog.png) | Works as expected |
-| Blog Post | ![screenshot](documentation/browsers/chrome-blog-post.png) | ![screenshot](documentation/browsers/firefox-blog-post.png) | ![screenshot](documentation/browsers/safari-blog-post.png) | Works as expected |
-| 404 | ![screenshot](documentation/browsers/chrome-404.png) | ![screenshot](documentation/browsers/firefox-404.png) | ![screenshot](documentation/browsers/safari-404.png) | Works as expected |
 
 ## Lighthouse Audit
 
@@ -112,10 +82,11 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | --- | --- | --- |
 | Register | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-register.png) |
 | Login | ![screenshot](documentation/lighthouse/mobile-login.png) | ![screenshot](documentation/lighthouse/desktop-login.png) |
-| Home | ![screenshot](documentation/lighthouse/mobile-home.png) | ![screenshot](documentation/lighthouse/desktop-home.png) |
-| Add Blog | ![screenshot](documentation/lighthouse/mobile-add-blog.png) | ![screenshot](documentation/lighthouse/desktop-add-blog.png) |
-| Edit Blog | ![screenshot](documentation/lighthouse/mobile-edit-blog.png) | ![screenshot](documentation/lighthouse/desktop-edit-blog.png) |
-| Blog Post | ![screenshot](documentation/lighthouse/mobile-blog-post.png) | ![screenshot](documentation/lighthouse/desktop-blog-post.png) |
+| Home | ![screenshot](documentation/lighthouse/mobile-index.png) | ![screenshot](documentation/lighthouse/desktop-index.png) |
+| Profile-detail | ![screenshot](documentation/lighthouse/mobile-about-me.png) | ![screenshot](documentation/lighthouse/desktop-about-me.png) |
+| Discover | ![screenshot](documentation/lighthouse/mobile-discover.png) | ![screenshot](documentation/lighthouse/desktop-discover.png) |
+| Liked-profiles | ![screenshot](documentation/lighthouse/mobile-discover.png) | ![screenshot](documentation/lighthouse/desktop-blog-post.png) |
+| Matches | ![screenshot](documentation/lighthouse/mobile-matches.png) | ![screenshot](documentation/lighthouse/desktop-matches.png) |
 | 404 | ![screenshot](documentation/lighthouse/mobile-404.png) | ![screenshot](documentation/lighthouse/desktop-404.png) |
 
 ## Defensive Programming
