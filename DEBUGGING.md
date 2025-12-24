@@ -86,6 +86,77 @@ def get_success_url(self):
 **Files Modified:**
 - `dating/views.py` (lines 76-77)
 
+---
+
+### Bug #17: 500 Error on Profile Creation Due to Incorrect ValidationError Import and reverse_lazy Issue
+**Severity:** High  
+**Status:** ✅ Fixed
+
+**Description:**
+When creating a new profile, the application raised a 500 Internal Server Error. This was caused by two issues:
+1. Importing `ValidationError` from `django.forms` instead of `django.core.exceptions`
+2. Using `reverse_lazy` in `get_success_url()` which evaluated `self.object.pk` before the object was fully saved
+
+**Error Messages:**
+```text
+# First error (ValidationError import):
+django.core.exceptions.ValidationError: ['Age must be at least 18.']
+# Error not caught because wrong ValidationError was imported
+
+# Second error (reverse_lazy with None pk):
+django.urls.exceptions.NoReverseMatch: Reverse for 'profile_detail' with keyword arguments '{'pk': None}' not found. 
+1 pattern(s) tried: ['profile/(?P<pk>[0-9]+)/\\Z']
+```
+
+**Root Cause:**
+1. **Wrong ValidationError import**: Model field validators raise `django.core.exceptions.ValidationError`, but the view was importing `django.forms.ValidationError`, so the exception handler couldn't catch model validation errors.
+
+2. **reverse_lazy timing issue**: `reverse_lazy` with `args=[self.object.pk]` evaluates the arguments when the lazy object is constructed, not when it's accessed. At that point, `self.object.pk` might still be `None` if called before the object is fully saved.
+
+```python
+# BEFORE (dating/views.py)
+from django.forms import ValidationError  # ❌ Wrong import
+# ...
+def get_success_url(self):
+    return reverse_lazy('profile_detail', args=[self.object.pk])  # ❌ pk may be None
+```
+
+**Fix Applied:**
+1. Changed import to use `django.core.exceptions.ValidationError`
+2. Changed `get_success_url()` to use `reverse` instead of `reverse_lazy` since `get_success_url()` is called after the object is saved
+
+```python
+# AFTER (dating/views.py, lines 2, 66-68)
+from django.core.exceptions import ValidationError  # ✅ Correct import
+
+def get_success_url(self):
+    # Use reverse instead of reverse_lazy since object is already saved
+    return reverse('profile_detail', args=[self.object.pk])  # ✅ pk is guaranteed
+```
+
+Also improved the ValidationError exception handler to properly handle both `error_dict` and message-based validation errors:
+
+```python
+# AFTER (dating/views.py, lines 47-56)
+except ValidationError as e:
+    # Handle validation errors
+    if hasattr(e, 'error_dict'):
+        for field, errors in e.error_dict.items():
+            for error in errors:
+                form.add_error(field, error)
+    else:
+        error_msg = str(e)
+        form.add_error(None, error_msg)
+    return self.form_invalid(form)
+```
+
+**Files Modified:**
+- `dating/views.py` (lines 2, 47-56, 66-68)
+
+**Prevention:**
+- Always use `django.core.exceptions.ValidationError` for model validation errors
+- Use `reverse` instead of `reverse_lazy` in `get_success_url()` methods since the URL is generated after the object is saved
+- Use `reverse_lazy` only for class-level attributes that need lazy evaluation
 
 ---
 
@@ -328,6 +399,45 @@ ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']  # �
 
 ---
 
+### Bug #18: X-Frame-Options Preventing Website Embedding in Iframe
+**Severity:** Medium  
+**Status:** ✅ Fixed
+
+**Description:**
+When trying to embed the website in an iframe (for testing on https://ui.dev/amiresponsive ), the browser refused to display the page with an error message about X-Frame-Options.
+
+**Error Message:**
+```text
+Refused to display '<URL>' in a frame because it set 'X-Frame-Options' to 'deny'.
+```
+
+**Root Cause:**
+Django's default `X_FRAME_OPTIONS` setting is `'DENY'`, which prevents the site from being embedded in any iframe, including same-origin iframes. This is a security feature to prevent clickjacking attacks, but it also blocks legitimate embedding use cases like testing platforms or documentation sites.
+
+**Fix Applied:**
+Configured `X_FRAME_OPTIONS` to allow embedding from specific trusted domains:
+
+```python
+# AFTER (match_up/settings.py, lines 110-111)
+# X-Frame-Options settings
+# Allow embedding from ui.dev (prevents clickjacking while allowing legitimate embedding)
+X_FRAME_OPTIONS = 'ALLOW-FROM https://ui.dev/'
+```
+
+**Files Modified:**
+- `match_up/settings.py` (lines 110-111)
+
+**Note:** 
+- `'DENY'` - Prevents the site from being embedded in any iframe (most secure, but blocks all embedding)
+- `'SAMEORIGIN'` - Allows embedding only from the same origin
+- `'ALLOW-FROM <URL>'` - Allows embedding from a specific URL (Django 3.0+)
+- For production, consider using `Content-Security-Policy` header with `frame-ancestors` directive as a more modern alternative
+
+**Prevention:**
+Configure X-Frame-Options appropriately based on whether your application needs to be embeddable. If embedding is required, use `'ALLOW-FROM'` for specific trusted domains or `'SAMEORIGIN'` if only same-origin embedding is needed.
+
+---
+
 
 ## Database & Model Bugs
 
@@ -364,6 +474,76 @@ class Meta:
 
 **Files Modified:**
 - `dating/models.py` (line 28)
+
+---
+
+### Bug #16: Transaction Management Error in Profile Creation Tests
+**Severity:** High  
+**Status:** ✅ Fixed
+
+**Description:**
+When testing a view that catches a database error (like an `IntegrityError` for a duplicate profile), the test suite crashes with a `TransactionManagementError`, even though the exception was caught in a `try/except` block.
+
+**Error Message:**
+```text
+django.db.utils.IntegrityError: UNIQUE constraint failed: dating_profile.user_id
+
+... (chained exception) ...
+
+django.db.transaction.TransactionManagementError: An error occurred in the current transaction. 
+You can't execute queries until the end of the 'atomic' block.
+```
+
+**Root Cause:**
+Django's `TestCase` wraps every test in a database transaction. When an `IntegrityError` occurs, the database marks the current transaction as "aborted" (or broken). Even if Python catches the error, the database connection remains in this broken state. Any subsequent query (like rendering a template or querying the DB in a test assertion) causes a second fatal error.
+
+```python
+# BEFORE (dating/views.py)
+def form_valid(self, form):
+    form.instance.user = self.request.user
+    try:
+        response = super().form_valid(form)  # ❌ No transaction management
+        return response
+    except IntegrityError:
+        form.add_error(None, "You already have a profile.")
+        return self.form_invalid(form)  # ❌ Transaction is broken here
+```
+
+**Fix Applied:**
+Wrapped the save operation in `transaction.atomic()` to create a savepoint. If the operation fails, Django rolls back only to that savepoint, leaving the main transaction clean and usable. Also added `refresh_from_db()` to clear the failed profile from the user instance in memory.
+
+```python
+# AFTER (dating/views.py, lines 30-46)
+from django.db import IntegrityError, transaction
+
+def form_valid(self, form):
+    form.instance.user = self.request.user
+    try:
+        # WRAP THE SAVE IN ATOMIC - creates a savepoint
+        with transaction.atomic():
+            response = super().form_valid(form)
+        # Add success message after profile is created
+        messages.success(
+            self.request,
+            'Profile successfully created! '
+            'You can now browse other profiles.'
+        )
+        return response
+    except IntegrityError:
+        # 1. The transaction is now rolled back to the savepoint and is clean.
+        # 2. Refresh the user instance to clear the failed 'profile' from memory
+        #    (prevents template errors when checking {% if user.profile %})
+        self.request.user.refresh_from_db()
+        # Show a friendly error on the page instead of a 400
+        form.add_error(None, "You already have a profile.")
+        return self.form_invalid(form)
+```
+
+**Files Modified:**
+- `dating/views.py` (lines 1, 33, 43)
+
+**Prevention:**
+Always use `transaction.atomic()` when handling database errors that might break the transaction, especially in views that are tested with Django's TestCase.
 
 ---
 
@@ -567,6 +747,4 @@ python manage.py migrate
 
 **Result:**
 Profile cards are now more concise, displaying only essential information (age, gender, location, photo), and all profiles guarantee complete location data.
-
-
 
