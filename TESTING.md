@@ -223,19 +223,18 @@ Below are the results from the tests that I've written for this application:
 
 I have used Django's built-in unit testing framework to test the application functionality.
  
+I created unit tests for the "dating" and "connections" app views which cover the applications main functionalities. All tests passed successfully.
 
-I created unit tests for the "dating" and "connections" app views which cover the applications main functionalities. All tests passed successfully:
-
-![Test Results Screenshot](documentation/dating-test.png)
-
-
-
-
-
- In order to run the tests, I ran the following command in the terminal each time:
+In order to run the tests, I ran the following command in the terminal each time:
 
 - `python3 manage.py test dating`
 - `python3 manage.py test connections`
+
+**Results:**
+
+![Test Results Screenshot](documentation/dating-test.png)
+![Test Results Screenshot](documentation/connections-test.png)
+
 
 To create the coverage report, I would then run the following commands:
 
