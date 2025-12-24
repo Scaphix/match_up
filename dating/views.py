@@ -1,10 +1,10 @@
-from django.db import IntegrityError
-from django.forms import ValidationError
+from django.db import IntegrityError, transaction
+from django.core.exceptions import ValidationError
 from django.views import generic
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
 from .models import Profile
 
@@ -30,7 +30,8 @@ class ProfileCreate(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         try:
-            response = super().form_valid(form)
+            with transaction.atomic():
+                response = super().form_valid(form)
             # Add success message after profile is created
             messages.success(
                 self.request,
@@ -39,15 +40,19 @@ class ProfileCreate(LoginRequiredMixin, generic.CreateView):
             )
             return response
         except IntegrityError:
+            self.request.user.refresh_from_db()
             # Show a friendly error on the page instead of a 400
             form.add_error(None, "You already have a profile.")
             return self.form_invalid(form)
         except ValidationError as e:
-            # Attach validation errors to the form and re-render
-            error_msg = (
-                e.message if hasattr(e, "message") else str(e)
-            )
-            form.add_error(None, error_msg)
+            # Handle validation errors
+            if hasattr(e, 'error_dict'):
+                for field, errors in e.error_dict.items():
+                    for error in errors:
+                        form.add_error(field, error)
+            else:
+                error_msg = str(e)
+                form.add_error(None, error_msg)
             return self.form_invalid(form)
         except Exception:
             form.add_error(
@@ -59,7 +64,8 @@ class ProfileCreate(LoginRequiredMixin, generic.CreateView):
     # Redirect to profile detail page after successful profile creation
 
     def get_success_url(self):
-        return reverse_lazy('profile_detail', args=[self.object.pk])
+        # Use reverse instead of reverse_lazy since object is already saved
+        return reverse('profile_detail', args=[self.object.pk])
 
 
 class ProfileUpdate(LoginRequiredMixin, generic.UpdateView):
