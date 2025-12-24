@@ -38,15 +38,7 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 | static | [style.css](https://github.com/Scaphix/match_up/blob/main/static/css/style.css) | ![screenshot](documentation/validation/css-style.png) | 
 
 
-### JavaScript
-
-
-I have used the recommended [JShint Validator](https://jshint.com) to validate all of my JS files.
-
-| Directory | File | Screenshot | 
-| --- | --- | --- | 
-| static | [script.js](https://github.com/Scaphix/match_up/blob/main/static/js/script.js) | ![screenshot](documentation/validation/js-script.png) |
-
+#
 
 ### Python
 
@@ -94,26 +86,26 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
 Defensive programming was manually tested with the below user acceptance testing:
 
-| Page | Expectation | Test | Result | Screenshot |
+| Page/Feature | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- | --- |
-| Blog Management | Feature is expected to allow the blog owner to create new posts with a title, featured image, and content. | Created a new post with valid title, image, and content data. | Post was created successfully and displayed correctly in the blog. | ![screenshot](documentation/defensive/create-post.png) |
-| | Feature is expected to allow the blog owner to update existing posts. | Edited the content of an existing blog post. | Post was updated successfully with the new content. | ![screenshot](documentation/defensive/update-post.png) |
-| | Feature is expected to allow the blog owner to delete blog posts. | Attempted to delete a blog post, confirming the action before proceeding. | Blog post was deleted successfully. | ![screenshot](documentation/defensive/delete-post.png) |
-| | Feature is expected to retrieve a list of all published posts. | Accessed the blog owner dashboard to view all published posts. | All published posts were displayed in a list view. | ![screenshot](documentation/defensive/published-posts.png) |
-| | Feature is expected to preview posts as drafts before publishing. | Created a draft post and previewed it. | Draft was displayed correctly in preview mode. | ![screenshot](documentation/defensive/preview-draft.png) |
-| Comments Management | Feature is expected to allow the blog owner to approve or reject comments. | Approved and rejected comments from the dashboard. | Approved comments were published; rejected comments were removed. | ![screenshot](documentation/defensive/review-comments.png) |
-| | Feature is expected to allow the blog owner to edit or delete comments. | Edited and deleted existing comments. | Comments were updated or removed successfully. | ![screenshot](documentation/defensive/edit-delete-comments.png) |
-| User Authentication | Feature is expected to allow registered users to log in to the site. | Attempted to log in with valid and invalid credentials. | Login was successful with valid credentials; invalid credentials were rejected. | ![screenshot](documentation/defensive/login.png) |
-| | Feature is expected to allow users to register for an account. | Registered a new user with unique credentials. | User account was created successfully. | ![screenshot](documentation/defensive/register.png) |
-| | Feature is expected to allow users to log out securely. | Logged out and tried accessing a restricted page. | Access was denied after logout, as expected. | ![screenshot](documentation/defensive/logout.png) |
-| User Comments | Feature is expected to allow registered users to leave comments on blog posts. | Logged in and added comments to a blog post. | Comments were successfully added and marked as pending approval. | ![screenshot](documentation/defensive/add-comment.png) |
-| | Feature is expected to display a notification that comments are pending approval. | Added a comment and checked the notification message. | Notification was displayed as expected. | ![screenshot](documentation/defensive/pending-approval.png) |
-| | Feature is expected to allow users to edit their own comments. | Edited personal comments. | Comments were updated as expected. | ![screenshot](documentation/defensive/edit-user-comments.png) |
-| | Feature is expected to allow users to delete their own comments. | Deleted personal comments. | Comments were removed as expected. | ![screenshot](documentation/defensive/delete-user-comments.png) |
-| Guest Features | Feature is expected to allow guest users to read blog posts without registering. | Opened blog posts as a guest user. | Blog posts were fully accessible without logging in. | ![screenshot](documentation/defensive/view-posts-guest.png) |
-| | Feature is expected to display the names of other commenters on posts. | Checked the names of commenters on posts as a guest user. | Commenter names were displayed as expected. | ![screenshot](documentation/defensive/commenter-names.png) |
-| | Feature is expected to block standard users from brute-forcing admin pages. | Attempted to navigate to admin-only pages by manipulating the URL (e.g., `/admin`). | Access was blocked, and a message was displayed showing denied access. | ![screenshot](documentation/defensive/brute-force.png) |
-| 404 Error Page | Feature is expected to display a 404 error page for non-existent pages. | Navigated to an invalid URL (e.g., `/test`). | A custom 404 error page was displayed as expected. | ![screenshot](documentation/defensive/404.png) |
+| Profile Creation | Feature is expected to prevent creating duplicate profiles for the same user. | Attempted to create a second profile for an existing user. | Error message displayed: "You already have a profile." Profile creation was prevented. | - |
+| | Feature is expected to validate profile data (age must be 18+, bio minimum length, etc.). | Submitted profile form with invalid data (age < 18, bio too short). | Validation errors displayed for each invalid field. Profile was not created. | ![screenshot](documentation/features/error-handling2.png) |
+| | Feature is expected to handle database transaction errors gracefully. | Simulated database integrity error during profile creation. | Transaction was rolled back cleanly. User-friendly error message displayed. | - |
+| Profile Management | Feature is expected to require authentication before accessing profile pages. | Attempted to access profile edit page without logging in. | User was redirected to login page. Access was denied. | - |
+| | Feature is expected to check if profile exists before allowing edit/delete. | Attempted to edit profile when no profile exists. | User was redirected to profile creation page. | - |
+| | Feature is expected to only allow users to edit/delete their own profile. | Attempted to access another user's profile edit URL. | Access was denied. User could only access their own profile. | - |
+| Like/Pass Actions | Feature is expected to prevent users from liking their own profile. | Attempted to like own profile. | Error message displayed: "Cannot like your own profile." Action was prevented. | - |
+| | Feature is expected to require user to have a profile before liking others. | Attempted to like a profile without having created own profile. | Error message displayed: "You must create a profile first." Action was prevented. | - |
+| | Feature is expected to handle non-existent profile IDs gracefully. | Attempted to like a profile with invalid/non-existent ID. | 404 error page displayed. Action was prevented. | ![screenshot](documentation/features/404.png) |
+| Discover Page | Feature is expected to redirect unauthenticated users to login. | Attempted to access discover page without logging in. | User was redirected to login page. Access was denied. | - |
+| | Feature is expected to redirect users without profiles to profile creation. | Attempted to access discover page without creating profile. | User was redirected to profile creation page. | ![screenshot](documentation/features/redirect-to-create-profile.png) |
+| | Feature is expected to exclude already interacted profiles from the feed. | Viewed discover page after liking/passing on several profiles. | Previously interacted profiles were excluded from the feed. | - |
+| Matches Page | Feature is expected to only show active matches for the current user. | Viewed matches page with both active and inactive matches. | Only active matches were displayed. Inactive matches were filtered out. | - |
+| User Authentication | Feature is expected to validate login credentials. | Attempted to log in with invalid credentials. | Login was rejected. Error message displayed. | ![screenshot](documentation/features/invalid-credentials.png) |
+| | Feature is expected to prevent access to protected pages after logout. | Logged out and attempted to access a protected page (e.g., discover). | User was redirected to login page. Access was denied. | ![screenshot](documentation/features/login.png) |
+| | Feature is expected to handle duplicate username/email during registration. | Attempted to register with an existing username or email. | Registration was rejected. Error message displayed indicating the field already exists. | ![screenshot](documentation/features/signup-duplicate.png) |
+| 404 Error Page | Feature is expected to display a custom 404 error page for non-existent pages. | Navigated to an invalid URL (e.g., `/profile/99999/`). | Custom 404 error page was displayed with navigation options. | ![screenshot](documentation/features/404.png) |
+| Admin Access | Feature is expected to block non-admin users from accessing admin pages. | Attempted to navigate to admin-only pages by manipulating the URL (e.g., `/admin`). | Access was blocked. Login page or access denied message displayed. | - |
 
 ## User Story Testing
 
@@ -131,9 +123,9 @@ All user stories from the project have been manually tested to ensure they meet 
 | As a registered user | I want to be notified and automatically redirected to the matches page when I have a new match | so that I don't miss opportunities to connect. | ![screenshot](documentation/features/match-notification.png) |
 | As a registered user | I can see profiles fade out after I like or pass on them | so that I get visual feedback that my action was successful. | ![screenshot](documentation/features/pass-profile.png) |
 | As a registered user | I can view detailed profile information | so that I can learn more about someone before connecting. | ![screenshot](documentation/features/profile-detail.png) |
-| As a registered user | I can return to the previous page when viewing a profile detail | so that I can easily continue browsing from where I left off. | ![screenshot](documentation/features/profile-detail.png) |
+| As a registered user | I can return to the previous page when viewing a profile detail | so that I can easily continue browsing from where I left off. | ![screenshot](documentation/features/return.png) |
 | As a registered user | I can see profiles I've liked | so that I can review my interests and revisit profiles. | ![screenshot](documentation/features/liked-profiles.png) |
-| As a user | I would like responsive design on mobile | so that I can browse matches on any device. | ![screenshot](documentation/features/discover1.png) |
+| As a user | I would like responsive design on mobile | so that I can browse matches on any device. | ![screenshot](documentation/mockup.png) |
 | As a user | I would like to see a 404 error page if I get lost | so that it's obvious that I've stumbled upon a page that doesn't exist. | ![screenshot](documentation/features/404.png) |
 
 ## Automated Testing
@@ -143,78 +135,8 @@ I have conducted a series of automated tests on my application.
 > [!NOTE]  
 > I fully acknowledge and understand that, in a real-world scenario, an extensive set of additional tests would be more comprehensive.
 
-### JavaScript (Jest Testing)
-
-
-I have used the [Jest](https://jestjs.io) JavaScript testing framework to test the application functionality. In order to work with Jest, I first had to initialize NPM.
-
-- `npm init`
-- Hit `<enter>` for all options, except for **test command:**, just type `jest`.
-
-Add Jest to a list called **Dev Dependencies** in a dev environment:
-
-- `npm install --save-dev jest`
-
-**IMPORTANT**: Initial configurations
-
-When creating test files, the name of the file needs to be `file-name.test.js` in order for Jest to properly work. Without the following, Jest won't properly run the tests:
-
-- `npm install -D jest-environment-jsdom`
-
-Due to a change in Jest's default configuration, you'll need to add the following code to the top of the `.test.js` file:
-
-```js
-/**
- * @jest-environment jsdom
- */
-
-/* jshint esversion: 11, jquery: true */
-/* global jest, require, describe, beforeEach, afterEach, test, expect, global */
-
-const { test, expect } = require("@jest/globals");
-const { function1, function2, function3, etc. } = require("../script-name");
-
-beforeAll(() => {
-    let fs = require("fs");
-    let fileContents = fs.readFileSync("index.html", "utf-8");
-    document.open();
-    document.write(fileContents);
-    document.close();
-});
-```
-
-Remember to adjust the `fs.readFileSync()` to the specific file you'd like you test. The example above is testing the `index.html` file.
-
-Finally, at the bottom of the script file where your primary scripts are written, include the following at the very bottom of the file. Make sure to include the name of all of your functions that are being tested in the `.test.js` file.
-
-```js
-/* jshint esversion: 11, jquery: true */
-/* global module */
-if (typeof module !== "undefined") module.exports = {
-    function1, function2, function3, etc
-};
-```
-
-Now that these steps have been undertaken, further tests can be written, and be expected to fail initially. Write JS code that can get the tests to pass as part of the Red-Green refactor process. Once ready, to run the tests, use this command:
-
-- `npm test`
-
-**NOTE**: To obtain a coverage report, use the following command:
-
-- `npm test --coverage`
-
-Below are the results from the tests that I've written for this application:
-
-| Test Suites | Tests | Screenshot |
-| --- | --- | --- |
-| 1 passed | 16 passed | ![screenshot](documentation/automation/jest-coverage.png) |
-
-#### Jest Test Issues
-
-
 
 ### Python (Unit Testing)
-
 
 I have used Django's built-in unit testing framework to test the application functionality.
  
@@ -250,7 +172,3 @@ To see the HTML version of the reports, and find out whether some pieces of code
 Below are the results from the full coverage report on my application that I've tested:
 
 ![screenshot](documentation/coverage-report.png)
-
-
-
-
