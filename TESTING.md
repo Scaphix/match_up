@@ -16,7 +16,7 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | --- | --- | --- | 
 | connections | [discover.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/discover.html) | ![screenshot](documentation/validation/html-discover.png) | 
 | connections | [liked_profiles.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/liked_profiles.html) |  ![screenshot](documentation/validation/html-liked_profiles.png) | 
-| connections | [matches.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/ matches.html) |  ![screenshot](documentation/validation/html-matches.png) | 
+| connections | [matches.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/matches.html) |  ![screenshot](documentation/validation/html-matches.png) | 
 | dating | [about.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/about.html) |  ![screenshot](documentation/validation/html-dating-about.png) | 
 | dating | [contact.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/contact.html) |  ![screenshot](documentation/validation/html-dating-contact.png) | 
 | dating | [index.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/index.html) |  ![screenshot](documentation/validation/html-index.png) | 
@@ -221,9 +221,21 @@ Below are the results from the tests that I've written for this application:
 ### Python (Unit Testing)
 
 
-I have used Django's built-in unit testing framework to test the application functionality. In order to run the tests, I ran the following command in the terminal each time:
+I have used Django's built-in unit testing framework to test the application functionality.
+ 
+
+I created unit tests for the "dating" and "connections" app views which cover the applications main functionalities. All tests passed successfully:
+
+![Test Results Screenshot](documentation/dating-test.png)
+
+
+
+
+
+ In order to run the tests, I ran the following command in the terminal each time:
 
 - `python3 manage.py test dating`
+- `python3 manage.py test connections`
 
 To create the coverage report, I would then run the following commands:
 
@@ -241,6 +253,6 @@ Below are the results from the full coverage report on my application that I've 
 
 ![screenshot](documentation/automation/html-coverage.png)
 
-#### Unit Test Issues
+
 
 
