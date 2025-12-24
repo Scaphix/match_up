@@ -116,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Primary CTA Button (Passion Coral Gradient) */
 .cta {
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-family: var(--font-accent);   
     padding: 0.5rem 1.5rem;
     border-radius: 50px; /* Bubbly shape */   
@@ -305,6 +305,24 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--black);
 }
 
+/* About page logo */
+.logo {
+    max-width: 9rem;
+}
+
+/* About page styling */
+.about-page .text-primary {
+    color: var(--coral) !important;
+}
+
+.about-page .auth-card {
+    padding: 1.5rem;
+}
+
+.about-page .auth-card .card-body {
+    padding: 2rem;
+}
+
 
 
 /* AUTH FORMS */
@@ -442,10 +460,9 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 6px 20px rgba(255, 90, 122, 0.4);
 }
 
-#icon {
+#icon, .icon {
     color: var(--coral);
 }
-
 
 /* Profile Photo */
 .profile-photo-container {
@@ -590,14 +607,19 @@ h1, h2, h3, h4, h5, h6 {
 width: 50px;
 }
 
-#id_location, #id_interests {
+#id_location {
 width: 120px;
 }
 
-#id_bio {
+#id_bio{
 
-width:200px;
+width:150px;
 height:100px;
+}
+#id_interests {
+
+width:100px;
+height:50px;
 }
 
 
@@ -710,7 +732,6 @@ height:100px;
     }
  
    
-    
     .profile-photo {
         width: 200px;
         height: 200px;
@@ -742,19 +763,20 @@ height:100px;
     width: 200px; 
     height: 200px; 
    }
-   #id_bio {
+
+   #id_bio  {
     width:300px;
     height:200px;
-}
-
-}
-
-@media (max-width: 768px) {
+   }
+    #id_interests  {
+        width:150px;
+        height:100px;
+    }
     .auth-card {
         padding: 2rem !important;
     }
     
-   
+    
     .btn-view {
         width: 100%;
         min-width: auto;
@@ -766,6 +788,12 @@ height:100px;
         height: 150px;
     }
 }
+
+/* Add padding for screens larger than 425px */
+
+
+
+
 
 @media (min-width: 768px) {
     .profile-photo {
@@ -796,7 +824,11 @@ height:100px;
     }
    #id_bio {
     width:400px;
-    height:200px;
-}
+    }
+    #id_interests {
+        width:250px;
+    }
+
+   
 }
 
