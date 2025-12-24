@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.views import View
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.contrib import messages
 from django.db import IntegrityError
 from dating.models import Profile
@@ -54,16 +54,14 @@ class LikeProfileView(LoginRequiredMixin, View):
     Automatically creates Match if mutual like exists (via signal).
     """
 
-    def post(self, request, profile_id):
+    def post(self, request, profile_id):        # Ensure user has a profile
+        if not hasattr(request.user, 'profile'):
+            return JsonResponse({
+                'error': 'You must create a profile first.'
+            }, status=400)
+        # Move get_object_or_404 outside try block so Http404 propagates
+        target_profile = get_object_or_404(Profile, id=profile_id)
         try:
-            # Ensure user has a profile
-            if not hasattr(request.user, 'profile'):
-                return JsonResponse({
-                    'error': 'You must create a profile first.'
-                }, status=400)
-
-            target_profile = get_object_or_404(Profile, id=profile_id)
-
             # Prevent liking yourself
             if target_profile.user == request.user:
                 return JsonResponse({
@@ -140,15 +138,15 @@ class PassProfileView(LoginRequiredMixin, View):
     """
 
     def post(self, request, profile_id):
+        # Ensure user has a profile
+        if not hasattr(request.user, 'profile'):
+            return JsonResponse({
+                'error': 'You must create a profile first.'
+            }, status=400)
+        # Move get_object_or_404 outside try block so Http404 propagates
+        target_profile = get_object_or_404(Profile, id=profile_id)
+
         try:
-            # Ensure user has a profile
-            if not hasattr(request.user, 'profile'):
-                return JsonResponse({
-                    'error': 'You must create a profile first.'
-                }, status=400)
-
-            target_profile = get_object_or_404(Profile, id=profile_id)
-
             # Prevent passing on yourself
             if target_profile.user == request.user:
                 return JsonResponse({
