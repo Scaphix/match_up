@@ -117,29 +117,24 @@ Defensive programming was manually tested with the below user acceptance testing
 
 ## User Story Testing
 
+All user stories from the project have been manually tested to ensure they meet the acceptance criteria. Below are the test results for each user story.
 
 | Target | Expectation | Outcome | Screenshot |
 | --- | --- | --- | --- |
-| As a blog owner | I would like to create new blog posts with a title, featured image, and content | so that I can share my experiences with my audience. | ![screenshot](documentation/features/feature01.png) |
-| As a blog owner | I would like to update existing blog posts | so that I can correct or add new information to my previous stories. | ![screenshot](documentation/features/feature02.png) |
-| As a blog owner | I would like to delete blog posts | so that I can remove outdated or irrelevant content from my blog. | ![screenshot](documentation/features/feature03.png) |
-| As a blog owner | I would like to retrieve a list of all my published blog posts | so that I can manage them from a central dashboard. | ![screenshot](documentation/features/feature04.png) |
-| As a blog owner | I would like to preview a post as draft before publishing it | so that I can ensure formatting and content appear correctly. | ![screenshot](documentation/features/feature05.png) |
-| As a blog owner | I would like to review comments before they are published | so that I can filter out spam or inappropriate content. | ![screenshot](documentation/features/feature06.png) |
-| As a blog owner | I would like to approve or reject comments from users | so that I can maintain control over the discussion on my posts. | ![screenshot](documentation/features/feature07.png) |
-| As a blog owner | I would like to view a list of all comments (both approved and pending) | so that I can manage user engagement effectively. | ![screenshot](documentation/features/feature08.png) |
-| As a blog owner | I would like to edit or delete user comments | so that I can clean up or remove inappropriate responses after they've been posted. | ![screenshot](documentation/features/feature09.png) |
-| As a registered user | I would like to log in to the site | so that I can leave comments on blog posts. | ![screenshot](documentation/features/feature10.png) |
-| As a registered user | I would like to register for an account | so that I can become part of the community and engage with the blog. | ![screenshot](documentation/features/feature11.png) |
-| As a registered user | I would like to leave a comment on a blog post | so that I can share my thoughts or ask questions about the owner's experiences. | ![screenshot](documentation/features/feature12.png) |
-| As a registered user | I would like my comment to show my name and the timestamp | so that others can see who I am and when I left the comment. | ![screenshot](documentation/features/feature13.png) |
-| As a registered user | I would like to receive a notification or message saying my comment is pending approval | so that I understand it hasn't been posted immediately. | ![screenshot](documentation/features/feature14.png) |
-| As a registered user | I would like to edit or delete my own comments | so that I can fix mistakes or retract my statement. | ![screenshot](documentation/features/feature15.png) |
-| As a guest user | I would like to read blog posts without registering | so that I can enjoy the content without needing to log in. | ![screenshot](documentation/features/feature16.png) |
-| As a guest user | I would like to browse past posts | so that I can explore the blog's full content history. | ![screenshot](documentation/features/feature17.png) |
-| As a guest user | I would like to register for an account | so that I can participate in the community by leaving comments on posts. | ![screenshot](documentation/features/feature18.png) |
-| As a guest user | I would like to see the names of other commenters on posts | so that I can get a sense of community interaction before registering. | ![screenshot](documentation/features/feature19.png) |
-| As a user | I would like to see a 404 error page if I get lost | so that it's obvious that I've stumbled upon a page that doesn't exist. | ![screenshot](documentation/features/feature20.png) |
+| As a guest user | I would like to view the home page | so that I can understand what the platform offers. | ![screenshot](documentation/features/home.png) |
+| As a new user | I can create an account/login to my account | so that I can access the dating platform. | ![screenshot](documentation/features/register.png) / ![screenshot](documentation/features/login.png) |
+| As a registered user | I can create/edit my profile | so that other users can learn about me. | ![screenshot](documentation/features/create-profile.png) / ![screenshot](documentation/features/edit-profile.png) |
+| As a registered user | I can delete my profile and account | so that I can remove my presence from the platform. | ![screenshot](documentation/features/delete-profile.png) |
+| As a registered user | I can view other profiles | so that I can discover potential matches. | ![screenshot](documentation/features/discover.png) |
+| As a registered user | I can rate a person (like or pass) | so that this person can be my match or not. | ![screenshot](documentation/features/like-profile.png) / ![screenshot](documentation/features/pass-profile.png) |
+| As a registered user | I can see my mutual matches | so that I can connect with people who also like me. | ![screenshot](documentation/features/matches.png) |
+| As a registered user | I want to be notified and automatically redirected to the matches page when I have a new match | so that I don't miss opportunities to connect. | ![screenshot](documentation/features/match-notification.png) |
+| As a registered user | I can see profiles fade out after I like or pass on them | so that I get visual feedback that my action was successful. | ![screenshot](documentation/features/pass-profile.png) |
+| As a registered user | I can view detailed profile information | so that I can learn more about someone before connecting. | ![screenshot](documentation/features/profile-detail.png) |
+| As a registered user | I can return to the previous page when viewing a profile detail | so that I can easily continue browsing from where I left off. | ![screenshot](documentation/features/profile-detail.png) |
+| As a registered user | I can see profiles I've liked | so that I can review my interests and revisit profiles. | ![screenshot](documentation/features/liked-profiles.png) |
+| As a user | I would like responsive design on mobile | so that I can browse matches on any device. | ![screenshot](documentation/features/discover1.png) |
+| As a user | I would like to see a 404 error page if I get lost | so that it's obvious that I've stumbled upon a page that doesn't exist. | ![screenshot](documentation/features/404.png) |
 
 ## Automated Testing
 
@@ -232,7 +227,11 @@ In order to run the tests, I ran the following command in the terminal each time
 
 **Results:**
 
+NO ERROR found:
+
 ![Test Results Screenshot](documentation/dating-test.png)
+
+
 ![Test Results Screenshot](documentation/connections-test.png)
 
 
@@ -250,7 +249,7 @@ To see the HTML version of the reports, and find out whether some pieces of code
 
 Below are the results from the full coverage report on my application that I've tested:
 
-![screenshot](documentation/automation/html-coverage.png)
+![screenshot](documentation/coverage-report.png)
 
 
 

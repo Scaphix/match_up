@@ -10,3 +10,9 @@ db.sqlite3
 profile_pictures/
 media/
 staticfiles/
+# Coverage reports
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
