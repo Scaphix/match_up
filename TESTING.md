@@ -17,8 +17,8 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | connections | [discover.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/discover.html) | ![screenshot](documentation/validation/html-discover.png) | 
 | connections | [liked_profiles.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/liked_profiles.html) |  ![screenshot](documentation/validation/html-liked_profiles.png) | 
 | connections | [matches.html](https://github.com/Scaphix/match_up/blob/main/connections/templates/connections/matches.html) |  ![screenshot](documentation/validation/html-matches.png) | 
-| dating | [about.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/about.html) |  ![screenshot](documentation/validation/html-dating-about.png) | 
-| dating | [contact.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/contact.html) |  ![screenshot](documentation/validation/html-dating-contact.png) | 
+| dating | [about.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/about.html) |  ![screenshot](documentation/validation/html-about.png) | 
+| dating | [contact.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/contact.html) |  ![screenshot](documentation/validation/html-contact.png) | 
 | dating | [index.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/index.html) |  ![screenshot](documentation/validation/html-index.png) | 
 | dating | [profile_delete.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_delete.html)  | ![screenshot](documentation/validation/html-profile_delete.png) | 
 | dating | [profile_detail.html](https://github.com/Scaphix/match_up/blob/main/dating/templates/dating/profile_detail.html)  | ![screenshot](documentation/validation/html-profile_detail.png) | 
