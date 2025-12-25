@@ -38,7 +38,15 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 | static | [style.css](https://github.com/Scaphix/match_up/blob/main/static/css/style.css) | ![screenshot](documentation/validation/css-style.png) | 
 
 
-#
+### JavaScript
+
+
+I have used the recommended [JShint Validator](https://jshint.com) to validate all of my JS files.
+
+| Directory | File | URL | Screenshot | 
+| --- | --- | --- | --- | 
+| static | [script.js](https://github.com/Scaphix/match_up/blob/main/static/js/script.js) |  | ![screenshot](documentation/validation/js-script.png) | 
+
 
 ### Python
 
@@ -77,7 +85,7 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Home | ![screenshot](documentation/lighthouse/mobile-index.png) | ![screenshot](documentation/lighthouse/desktop-index.png) |
 | Profile-detail | ![screenshot](documentation/lighthouse/mobile-about-me.png) | ![screenshot](documentation/lighthouse/desktop-about-me.png) |
 | Discover | ![screenshot](documentation/lighthouse/mobile-discover.png) | ![screenshot](documentation/lighthouse/desktop-discover.png) |
-| Liked-profiles | ![screenshot](documentation/lighthouse/mobile-discover.png) | ![screenshot](documentation/lighthouse/desktop-blog-post.png) |
+| Liked-profiles | ![screenshot](documentation/lighthouse/mobile-liked-profiles.png) | ![screenshot](documentation/lighthouse/desktop-liked-profiles.png) |
 | Matches | ![screenshot](documentation/lighthouse/mobile-matches.png) | ![screenshot](documentation/lighthouse/desktop-matches.png) |
 | 404 | ![screenshot](documentation/lighthouse/mobile-404.png) | ![screenshot](documentation/lighthouse/desktop-404.png) |
 
