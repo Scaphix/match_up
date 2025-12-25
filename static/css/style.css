@@ -101,6 +101,13 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
 }
 
+.navbar-nav .nav-link.active {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 90, 122, 0.3);
+    opacity: 1;
+}
+
+
 /* HERO SECTION */
 
 .hero-headline {
