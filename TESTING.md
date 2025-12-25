@@ -87,7 +87,6 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Discover | ![screenshot](documentation/lighthouse/mobile-discover.png) | ![screenshot](documentation/lighthouse/desktop-discover.png) |
 | Liked-profiles | ![screenshot](documentation/lighthouse/mobile-liked-profiles.png) | ![screenshot](documentation/lighthouse/desktop-liked-profiles.png) |
 | Matches | ![screenshot](documentation/lighthouse/mobile-matches.png) | ![screenshot](documentation/lighthouse/desktop-matches.png) |
-| 404 | ![screenshot](documentation/lighthouse/mobile-404.png) | ![screenshot](documentation/lighthouse/desktop-404.png) |
 
 ## Defensive Programming
 
