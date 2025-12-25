@@ -1,8 +1,11 @@
+/* jshint esversion: 11 */
 // Helper function to open a link
 
+/* jshint ignore:start */
 function openLink(link) {
     window.location.href = link;
 }
+/* jshint ignore:end */
 
 function getCSRFToken() {
     return document.querySelector('[name=csrfmiddlewaretoken]')?.value;
