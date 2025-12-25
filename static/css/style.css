@@ -298,6 +298,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-text {
     font-family: var(--font-body);
+    font-size: 1rem;
     color: var(--white);
     font-weight: 200;
     opacity: 0.9;
@@ -722,10 +723,7 @@ height:50px;
         font-size: 2rem;
     }
     
-    .card-text {
-        font-size: 1.25rem;
-        font-weight: 400;
-    }
+
     .btn-edit,
     .btn-delete {
         padding: 0.75rem 2.5rem;
@@ -798,9 +796,12 @@ height:50px;
 
 /* Add padding for screens larger than 425px */
 
-
-
-
+@media (min-width: 425px) and (max-width: 767px) {
+    .card-text {
+       font-size: 1.25rem;
+        
+    }
+}
 
 @media (min-width: 768px) {
     .profile-photo {
@@ -839,3 +840,9 @@ height:50px;
    
 }
 
+@media (min-width: 1024px) {
+.card-text {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+}
