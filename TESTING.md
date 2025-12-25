@@ -179,3 +179,9 @@ To see the HTML version of the reports, and find out whether some pieces of code
 Below are the results from the full coverage report on my application that I've tested:
 
 ![screenshot](documentation/coverage-report.png)
+
+
+## Debugging 
+
+> [!NOTE]  
+> For the developpement process and Bugs documentation, please refer to the [DEBUGGING.md](DEBUGGING.md) file.
